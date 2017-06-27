@@ -26,6 +26,11 @@ class User(db.Model):
     last_name = db.Column(db.String(64), nullable=False)
     email = db.Column(db.String(64), nullable=False)
 
+    def __repr__(self):
+        """Show info about user."""
+
+        return "< User id={}, username={}, email={} >".format(self.user_id, self.username, self.email)
+
 
 class Level(db.Model):
     """Creates a table for tracking user progress."""
@@ -35,6 +40,11 @@ class Level(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), primary_key=True)
     level = db.Column(db.Integer, nullable=False, default=0)
     points = db.Column(db.Integer, nullable=False, default=0)
+
+    def __repr__(self):
+        """Show info about level."""
+
+        return "< User id={}, level={}, points={} >".format(self.user_id, self.level, self.points)
 
 
 class Module(db.Model):
@@ -47,6 +57,11 @@ class Module(db.Model):
     description = db.Column(db.String(256), nullable=False)
     additional_info = db.Column(db.Text, nullable=True)
 
+    def __repr__(self):
+        """Show info about modules."""
+
+        return "< Module id={}, name={}>".format(self.module_id, self.name)
+        
 
 class Function(db.Model):
     """Creates a table for functions."""
@@ -59,6 +74,11 @@ class Function(db.Model):
     additional_info = db.Column(db.Text, nullable=True)
     sample_code = db.Column(db.String(256), nullable=True)
     output = db.Column(db.String(256), nullable=True)
+
+    def __repr__(self):
+        """Show info about functions."""
+
+        return "< Function id={}, name={}>".format(self.function_id, self.name)
 
 
 #Helper functions
