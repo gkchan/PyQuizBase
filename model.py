@@ -47,7 +47,7 @@ class Module(db.Model):
     additional_info = db.Column(db.Text, nullable=True)
 
 
-class Functions(db.Model):
+class Function(db.Model):
     """Creates a table for functions."""
 
     __tablename__ = "functions"
@@ -56,6 +56,8 @@ class Functions(db.Model):
     name = db.Column(db.String(64), nullable=False)
     description = db.Column(db.String(256), nullable=False)
     additional_info = db.Column(db.Text, nullable=True)
+    sample_code = db.Column(db.String(256), nullable=True)
+    output = db.Column(db.String(256), nullable=True)
 
 
 
