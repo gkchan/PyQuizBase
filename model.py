@@ -1,5 +1,6 @@
 """Database functions for coding tool project."""
 
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 # This connects to a PostgreSQL database and uses the Flask-SQLAlchemy library.
@@ -60,6 +61,23 @@ class Function(db.Model):
     output = db.Column(db.String(256), nullable=True)
 
 
+#Helper functions
 
+def connect_to_db(app):
+    """Connects the database to Flask app"""
+
+    #Configure for use with our PostgreSQL database.
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///code'
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    db.app = app
+    db.init_app(app)
+
+
+if __name__ == "__main__":
+    #Allows database to be run interactively when file is run.
+
+    app = Flask(__name__)
+    connect_to_db(app)
+    print "Connected to DB."
 
 
