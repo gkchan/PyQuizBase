@@ -21,10 +21,10 @@ class User(db.Model):
     __tablename__ = "users"
 
     user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    username = db.Column(db.String(64), nullable=False)
+    username = db.Column(db.String(64), nullable=False, unique=True)
     first_name = db.Column(db.String(64), nullable=False)
     last_name = db.Column(db.String(64), nullable=False)
-    email = db.Column(db.String(64), nullable=False)
+    email = db.Column(db.String(64), nullable=False, unique=True)
 
     def __repr__(self):
         """Show info about user."""
@@ -53,7 +53,7 @@ class Module(db.Model):
     __tablename__ = "modules"
 
     module_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.String(64), nullable=False)
+    name = db.Column(db.String(64), nullable=False, unique=True)
     description = db.Column(db.String(256), nullable=False)
     additional_info = db.Column(db.Text, nullable=True)
 
@@ -61,7 +61,7 @@ class Module(db.Model):
         """Show info about modules."""
 
         return "< Module id={}, name={}>".format(self.module_id, self.name)
-        
+
 
 class Function(db.Model):
     """Creates a table for functions."""
@@ -69,7 +69,7 @@ class Function(db.Model):
     __tablename__ = "functions"
 
     function_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.String(64), nullable=False)
+    name = db.Column(db.String(64), nullable=False, unique=True)
     description = db.Column(db.String(256), nullable=False)
     additional_info = db.Column(db.Text, nullable=True)
     sample_code = db.Column(db.String(256), nullable=True)
