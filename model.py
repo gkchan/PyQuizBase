@@ -26,6 +26,7 @@ class User(db.Model):
     last_name = db.Column(db.String(64), nullable=False)
     email = db.Column(db.String(64), nullable=False, unique=True)
 
+
     def __repr__(self):
         """Show info about user."""
 
@@ -53,9 +54,10 @@ class Module(db.Model):
     __tablename__ = "modules"
 
     module_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.String(64), nullable=False, unique=True)
+    name = db.Column(db.String(64), nullable=False)
     description = db.Column(db.String(256), nullable=False)
     additional_info = db.Column(db.Text, nullable=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
 
     def __repr__(self):
         """Show info about modules."""
@@ -69,11 +71,14 @@ class Function(db.Model):
     __tablename__ = "functions"
 
     function_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.String(64), nullable=False, unique=True)
+    name = db.Column(db.String(64), nullable=False)
     description = db.Column(db.String(256), nullable=False)
     additional_info = db.Column(db.Text, nullable=True)
     sample_code = db.Column(db.String(256), nullable=True)
     output = db.Column(db.String(256), nullable=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
+    module_id = db.Column(db.Integer, db.ForeignKey("modules.module_id"),
+                 nullable=False, default=2) # default will be unavailable in finished version if no module is put in 
 
     def __repr__(self):
         """Show info about functions."""

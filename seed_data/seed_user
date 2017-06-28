@@ -1,2 +1,2 @@
-username|first_name|last_name|email
-testuser|Cody|Lotts|fakeemail@gmail.com
+username(placeholder)|first_name|last_name|email
+testuser|Cody|Lotts|codylotts@gmail.com

@@ -68,8 +68,8 @@ def load_modules():
     # insert data from seed_module
     with open("seed_data/seed_module") as module_data:
         for row in module_data:
-            name, description, additional_info = row.rstrip().split("|")
-            module = Module(name=name, description=description, additional_info=additional_info)
+            name, description, additional_info, user_id = row.rstrip().split("|")
+            module = Module(name=name, description=description, additional_info=additional_info, user_id=user_id)
 
             # add module to session     
             db.session.add(module)
@@ -91,12 +91,14 @@ def load_functions():
     # insert data from seed_function
     with open("seed_data/seed_function") as function_data:
         for row in function_data:
-            name, description, additional_info, sample_code, output = row.rstrip().split("|")
+            name, description, additional_info, sample_code, output, user_id, module_id = row.rstrip().split("|")
             function = Function(name=name, 
                                 description=description, 
                                 additional_info=additional_info, 
                                 sample_code=sample_code, 
-                                output=output)
+                                output=output,
+                                user_id=user_id,
+                                module_id=module_id)
 
             # add function to session     
             db.session.add(function)

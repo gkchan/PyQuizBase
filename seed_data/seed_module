@@ -1,2 +1,4 @@
-name|description|additional_info
-Random|description of random|
+placeholder name|description|additional_info|1
+unavailable|module not added(default for functions with no module)||1
+built-in|comes with python||1
+Random|description of random||1
