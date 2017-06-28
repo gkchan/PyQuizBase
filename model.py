@@ -9,12 +9,6 @@ db = SQLAlchemy()
 
 # Model definitions.
 
-
-
-# NOTE: add backref
-
-
-
 class User(db.Model):
     """Creates a table for user info."""
 
@@ -26,6 +20,9 @@ class User(db.Model):
     last_name = db.Column(db.String(64), nullable=False)
     email = db.Column(db.String(64), nullable=False, unique=True)
 
+    levels = db.relationship("Level", uselist=False, backref="users")
+    modules = db.relationship("Module", backref="users")
+    functions = db.relationship("Function", backref="users")
 
     def __repr__(self):
         """Show info about user."""
@@ -58,6 +55,8 @@ class Module(db.Model):
     description = db.Column(db.String(256), nullable=False)
     additional_info = db.Column(db.Text, nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
+
+    functions = db.relationship("Function", backref="modules")
 
     def __repr__(self):
         """Show info about modules."""
