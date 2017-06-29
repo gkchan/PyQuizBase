@@ -14,10 +14,12 @@
 
   <a href="/">Homepage</a>
   <a href="/register">Register</a>
-  <a href="/login">Login</a><br>
+  <a href="/login">Login</a>
+  <a href="/logout">Logout</a><br>
 
- 
-  <h1>Welcome {{ session['current_user'] }}</h1>
+  {% if 'current_user' in session %}
+    <h1>{{ session['current_user'] }}'s Study Session</h1>
+  {% endif %}
 
 
   {% block content %}{% endblock %}

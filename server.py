@@ -87,6 +87,17 @@ def login():
     return redirect("/")
 
 
+@app.route("/logout")
+def logout():
+    """Logout user"""
+
+    if "current_user" in session:
+        del session["current_user"]
+
+    flash("You are logged out.")
+    return redirect("/")
+
+
 
 if __name__ == "__main__":
 
