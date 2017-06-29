@@ -22,8 +22,12 @@ def load_users():
     # insert data from seed_user
     with open("seed_data/seed_user") as user_data:
         for row in user_data:
-            username, first_name, last_name, email = row.rstrip().split("|")
-            user = User(username=username, first_name=first_name, last_name=last_name, email=email)
+            username, password, first_name, last_name, email = row.rstrip().split("|")
+            user = User(username=username, 
+                        password=password, 
+                        first_name=first_name, 
+                        last_name=last_name, 
+                        email=email)
 
             # add user to session     
             db.session.add(user)

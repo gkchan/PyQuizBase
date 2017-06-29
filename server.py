@@ -2,7 +2,7 @@
 
 from jinja2 import StrictUndefined
 
-from flask import Flask, session, flash, render_template
+from flask import Flask, session, flash, request, render_template
 from flask_debugtoolbar import DebugToolbarExtension
 
 # import classes from model module
@@ -20,13 +20,46 @@ app.secret_key = "code"
 # forces an error to be raised if variable is undefined in Jinja2
 app.jinja_env.undefined = StrictUndefined
 
-@app.route('/')
-def homepage():
-    """Display homepage"""
 
+@app.route('/')
+def show_homepage():
+    """Display homepage"""
 
     return render_template("homepage.html")
 
+
+@app.route("/register", methods=['GET'])
+def show_register_form():
+    """Displays registration form."""
+
+    return render_template("register.html")
+
+
+@app.route("/register", methods=['POST'])
+def register_user():
+    """Registers user."""
+
+    username = request.form.get("username")
+    password = request.form.get("password")
+    first_name = request.form.get("firstname")
+    last_name = request.form.get("lastname")
+    email = request.form.get("email")
+
+    if User.query.filter_by(username=username).all():
+        flash("Username is already in use. Please choose a different one.")
+    else:
+        user = User(username=username, 
+                    password=password, 
+                    first_name=first_name, 
+                    last_name=last_name, 
+                    email=email)
+
+        db.session.add(user)
+        db.session.commit()
+
+        flash("You have registered as {}.".format(username))
+
+    return render_template("homepage.html")
 
 
 if __name__ == "__main__":
