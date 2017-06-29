@@ -2,7 +2,7 @@
 
 from jinja2 import StrictUndefined
 
-from flask import Flask, render_template
+from flask import Flask, session, flash, render_template
 from flask_debugtoolbar import DebugToolbarExtension
 
 # import classes from model module
@@ -23,6 +23,7 @@ app.jinja_env.undefined = StrictUndefined
 @app.route('/')
 def homepage():
     """Display homepage"""
+
 
     return render_template("homepage.html")
 
