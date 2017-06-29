@@ -2,7 +2,7 @@
 
 from jinja2 import StrictUndefined
 
-from flask import Flask, session, flash, request, render_template
+from flask import Flask, session, flash, request, render_template, redirect
 from flask_debugtoolbar import DebugToolbarExtension
 
 # import classes from model module
@@ -24,6 +24,8 @@ app.jinja_env.undefined = StrictUndefined
 @app.route('/')
 def show_homepage():
     """Display homepage"""
+
+    flash(session)
 
     return render_template("homepage.html")
 
@@ -60,6 +62,30 @@ def register_user():
         flash("You have registered as {}.".format(username))
 
     return render_template("homepage.html")
+
+
+@app.route("/login", methods=['GET'])
+def show_login_form():
+    """Show login form."""
+
+    return render_template("login.html")
+
+
+@app.route("/login", methods=['POST'])
+def login():
+    """Login user"""
+
+    username = request.form.get("username")
+    password = request.form.get("password")
+
+    if User.query.filter_by(username=username, password=password).first():
+        session["current_user"] = username
+        flash("Welcome. You are logged in as {}".format(username))
+    else:
+        flash("Username or password does not match. Please try again.")
+
+    return redirect("/")
+
 
 
 if __name__ == "__main__":
