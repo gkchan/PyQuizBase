@@ -1,6 +1,8 @@
 """Flask server for code website."""
 
-from flask import Flask
+from jinja2 import StrictUndefined
+
+from flask import Flask, render_template
 from flask_debugtoolbar import DebugToolbarExtension
 
 # import classes from model module
@@ -15,6 +17,14 @@ app = Flask(__name__)
 # necessary for using Flask sessions and debug toolbar
 app.secret_key = "code"
 
+# forces an error to be raised if variable is undefined in Jinja2
+app.jinja_env.undefined = StrictUndefined
+
+@app.route('/')
+def homepage():
+    """Display homepage"""
+
+    return render_template("homepage.html")
 
 
 
