@@ -64,27 +64,26 @@ def register_user():
     return render_template("homepage.html")
 
 
-@app.route("/login", methods=['GET'])
-def show_login_form():
-    """Show login form."""
-
-    return render_template("login.html")
-
-
-@app.route("/login", methods=['POST'])
+@app.route("/login", methods=["GET", "POST"])
 def login():
     """Login user"""
 
-    username = request.form.get("username")
-    password = request.form.get("password")
+    if request.method == "GET":
 
-    if User.query.filter_by(username=username, password=password).first():
-        session["current_user"] = username
-        flash("Welcome. You are logged in as {}".format(username))
-    else:
-        flash("Username or password does not match. Please try again.")
+        return render_template("login.html")
 
-    return redirect("/")
+    elif request.method == "POST":
+
+        username = request.form.get("username")
+        password = request.form.get("password")
+
+        if User.query.filter_by(username=username, password=password).first():
+            session["current_user"] = username
+            flash("Welcome. You are logged in as {}".format(username))
+        else:
+            flash("Username or password does not match. Please try again.")
+
+        return redirect("/")
 
 
 @app.route("/logout")

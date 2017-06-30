@@ -14,8 +14,12 @@
 
   <a href="/">Homepage</a>
   <a href="/register">Register</a>
-  <a href="/login">Login</a>
-  <a href="/logout">Logout</a><br>
+
+  {% if 'current_user' in session %}  
+    <a href="/logout">Logout</a><br>
+  {% else %}
+    <a href="/login">Login</a>
+  {% endif %}  
 
   {% if 'current_user' in session %}
     <h1>{{ session['current_user'] }}'s Study Session</h1>
