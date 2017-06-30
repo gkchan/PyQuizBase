@@ -83,7 +83,7 @@ def login():
         else:
             flash("Username or password does not match. Please try again.")
 
-        return redirect("/")
+        return redirect("/<username>/dashboard")
 
 
 @app.route("/logout")
@@ -95,6 +95,13 @@ def logout():
 
     flash("You are logged out.")
     return redirect("/")
+
+
+@app.route("/<username>/dashboard")
+def show_dashboard(username):
+    """Show student dashboard"""
+
+    return render_template("dashboard.html")
 
 
 

@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+
+  {% if 'current_user' in session %}
+    <h3>{{ session['current_user'] }}'s Dashboard</h3>
+  {% endif %}
+
+{% endblock %}
