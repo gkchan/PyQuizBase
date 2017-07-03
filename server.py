@@ -21,10 +21,12 @@ app.secret_key = "code"
 app.jinja_env.undefined = StrictUndefined
 
 
+
 @app.route('/')
 def show_homepage():
     """Display homepage"""
 
+    # for developing/testing purposes:
     flash(session)
 
     return render_template("homepage.html")
@@ -83,7 +85,7 @@ def login():
         else:
             flash("Username or password does not match. Please try again.")
 
-        return redirect("/<username>/dashboard")
+        return redirect("/{}/dashboard".format(username))
 
 
 @app.route("/logout")
@@ -97,11 +99,32 @@ def logout():
     return redirect("/")
 
 
+def verify_user(username):
+    """Verify user login"""
+
+    if ("current_user" in session and session["current_user"] == username) == False:
+        flash("Please login.")
+        return redirect("/login")
+   
+
 @app.route("/<username>/dashboard")
 def show_dashboard(username):
     """Show student dashboard"""
 
-    return render_template("dashboard.html")
+    verify_user(username)
+    
+    return render_template("dashboard.html", username=session["current_user"])
+
+
+@app.route("/<username>/info")
+def show_user_info(username):
+    """Show user info"""
+
+    verify_user(username)
+
+    user = User.query.filter_by(username=username).first()
+    return render_template("user_info.html",
+                            user=user)
 
 
 

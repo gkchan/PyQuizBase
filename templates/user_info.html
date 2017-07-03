@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+  
+    <h4>{{ session['current_user'] }}'s Information</h4>
+
+    Name: {{ user.first_name }} {{ user.last_name }} <br>
+
+    Email: {{ user.email }} <br>
+
+    Level: {{ user.levels.level }}
+
+{% endblock %}
