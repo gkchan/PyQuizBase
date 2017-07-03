@@ -23,6 +23,7 @@
 
   {% if 'current_user' in session %}
     <h1>{{ session['current_user'] }}'s Study Session</h1>
+    <a href="/{{ session["current_user"] }}/dashboard">Dashboard</a>
   {% endif %}
 
 
