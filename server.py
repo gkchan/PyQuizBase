@@ -27,7 +27,7 @@ def show_homepage():
     """Display homepage"""
 
     # for developing/testing purposes:
-    flash(session)
+    print session
 
     return render_template("homepage.html")
 
@@ -116,6 +116,7 @@ def show_dashboard(username):
     return render_template("dashboard.html", username=session["current_user"])
 
 
+
 @app.route("/<username>/info")
 def show_user_info(username):
     """Show user info"""
@@ -125,6 +126,18 @@ def show_user_info(username):
     user = User.query.filter_by(username=username).first()
     return render_template("user_info.html",
                             user=user)
+
+
+@app.route("/<username>/studynotes")
+def show_study_notes(username):
+    """Show study notes"""
+
+    # verify_user(username)
+
+    study_table = db.session.query(Module).all()
+        
+    return render_template("study_notes.html", study_table=study_table)
+
 
 
 

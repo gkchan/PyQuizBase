@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <h3>Modules/Functions Info</h3>
+  
+  <ol>
+  {% for mod in study_table %}
+
+      <li>Module Name: {{ mod.name }} Desc: {{ mod.description }} Info: {{ mod.additional_info }} <br><br>
+
+        {% for func in mod.functions %}
+          Function Name: {{ func.name }} <br>
+          Desc: {{ func.description }}, {{ func.additional_info }} <br> 
+          Example: {{ func.sample_code }}: {{ func.output }}</li><br>
+        {% endfor %}<br>
+
+  {% endfor %}
+</ol> 
+
+{% endblock %}
