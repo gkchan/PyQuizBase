@@ -161,6 +161,7 @@ def add_modules(username):
         samplecode = request.form.get("samplecode")
         output = request.form.get("output")
 
+        # fetch user to get user_id
         user = User.query.filter_by(username=username).first()
 
         module = Module(name=mname,
@@ -169,6 +170,7 @@ def add_modules(username):
 
         db.session.add(module)
 
+        # fetch module to get module_id
         module = Module.query.filter_by(name=mname,
                                         description=mdesc,
                                         user_id=user.user_id).first()
