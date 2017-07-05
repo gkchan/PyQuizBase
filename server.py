@@ -116,7 +116,6 @@ def show_dashboard(username):
     return render_template("dashboard.html", username=session["current_user"])
 
 
-
 @app.route("/<username>/info")
 def show_user_info(username):
     """Show user info"""
@@ -136,7 +135,66 @@ def show_study_notes(username):
 
     study_table = db.session.query(Module).all()
         
-    return render_template("study_notes.html", study_table=study_table)
+    return render_template("study_notes.html", 
+                            study_table=study_table, 
+                            username=username)
+
+
+@app.route("/<username>/addmodules", methods=["GET", "POST"])
+def add_modules(username):
+    """Add function/module information"""
+
+    # currently only handles basic adding of info
+
+    # verify_user(username)
+
+    if request.method == "GET":
+
+        return render_template("add_modules.html", username=username)
+
+    elif request.method == "POST":
+
+        mname = request.form.get("mname")
+        mdesc = request.form.get("mdesc")
+        fname = request.form.get("fname")
+        fdesc = request.form.get("fdesc")
+        samplecode = request.form.get("samplecode")
+        output = request.form.get("output")
+
+        user = User.query.filter_by(username=username).first()
+
+        module = Module(name=mname,
+                        description=mdesc,
+                        user_id=user.user_id)
+
+        db.session.add(module)
+
+        module = Module.query.filter_by(name=mname,
+                                        description=mdesc,
+                                        user_id=user.user_id).first()
+
+        function = Function(name=fname, 
+                            description=fdesc, 
+                            sample_code=samplecode, 
+                            output=output,
+                            user_id=user.user_id,
+                            module_id=module.module_id)
+
+        db.session.add(function)
+        db.session.commit()
+
+        flash("Your notes have been added.")
+
+        return redirect("/{}/studynotes".format(username))
+                      
+ 
+        
+
+
+
+
+
+
 
 
 
