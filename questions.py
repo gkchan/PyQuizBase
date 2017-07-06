@@ -8,7 +8,7 @@ from model import User, Level, Module, Function
 # import database necessities from model module
 # from model import db, connect_to_db
 
-from random import randint, sample
+from random import randint, sample, shuffle
 
 
 # May have separate or combined functions depending on what program ultimately does
@@ -43,10 +43,20 @@ def ask_question():
     sample_code = function_entry.sample_code
 
     answer = function_entry.output
+    answer_choices = [ answer ]
+
+    # gets all functions, may need to be adapted if database ever becomes too big
+    functions = Function.query.all()
+
+    # chooses 3 random outputs from the database and adds them to multiple choice answers
+    for function in sample(functions, 3):
+        answer_choices.append(function.output)
+
+    shuffle(answer_choices)
 
     # simple testing/debugging during development
     print sample_code_question, answer
 
-    return sample_code_question, sample_code
+    return sample_code_question, sample_code, answer, answer_choices
 
 

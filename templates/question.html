@@ -1,10 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h1>Question:<h1>
+  <h1>Question:<h1>
 
-    <h4>{{ question }}</h4>
+  <h4>{{ question }}</h4>
 
-    <h4>{{ input_code }}</h4>
+  <h4>{{ input_code }}</h4>
+
+  <form action = "/quiz", method = "POST">
+    {% for ans in answer_choices %}
+      <input type = "radio", name = "useranswer", value = {{ ans }}>{{ ans }}<br>
+    {% endfor %}<br>
+    <input type = "submit", value = "Submit answer">
+  </form>
 
 {% endblock %}

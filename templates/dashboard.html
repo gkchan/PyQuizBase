@@ -5,7 +5,8 @@
     <h3>{{ session['current_user'] }}'s Dashboard</h3>
   {% endif %}
 
-  <a href="/{{ username }}/info">User info</a>
-  <a href="/{{ username }}/studynotes">Study Notes</a>
+  <a href="/{{ username }}/info">User info</a><br><br>
+  <a href="/{{ username }}/studynotes">Study Notes</a><br><br>
+  <a href="/quiz">Quiz</a>
 
 {% endblock %}
