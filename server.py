@@ -11,6 +11,8 @@ from model import User, Level, Module, Function
 # import database necessities from model module
 from model import db, connect_to_db
 
+from questions import ask_question
+
 
 app = Flask(__name__)
 
@@ -188,10 +190,21 @@ def add_modules(username):
         flash("Your notes have been added.")
 
         return redirect("/{}/studynotes".format(username))
+
+
+@app.route("/questions")
+def show_question():
+    """Display question"""
+
+    # chooses a function and asks a question
+    question, input_code = ask_question()
+
+    return render_template("question.html", question = question, input_code=input_code)
+
+
                       
  
         
-
 
 
 
