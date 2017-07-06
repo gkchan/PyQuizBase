@@ -204,7 +204,6 @@ def display_question():
         return render_template("question.html", 
                                 question=question, 
                                 input_code=input_code, 
-                                answer=answer,
                                 answer_choices=answer_choices)
 
     elif request.method == "POST":
