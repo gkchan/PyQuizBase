@@ -51,7 +51,7 @@ def register_user():
     last_name = request.form.get("lastname")
     email = request.form.get("email")
 
-    if User.query.filter_by(username=username).all():
+    if User.query.filter_by(username=username).first():
         flash("Username is already in use. Please choose a different one.")
     else:
         user = User(username=username, 
@@ -61,6 +61,11 @@ def register_user():
                     email=email)
 
         db.session.add(user)
+        db.session.flush()
+
+        level = Level(user_id=user.user_id)
+
+        db.session.add(level)
         db.session.commit()
 
         flash("You have registered as {}.".format(username))
