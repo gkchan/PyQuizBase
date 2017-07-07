@@ -196,10 +196,11 @@ def add_modules(username):
 def display_question():
     """Displays question to answer and then displays results with answer."""
 
-    # chooses a function entry and asks a question
-    question, input_code, answer, answer_choices = ask_question()
-
     if request.method == "GET":
+
+        # chooses a function entry and asks a question
+        question, input_code, answer, answer_choices = ask_question()
+        session["answer"] = answer
 
         return render_template("question.html", 
                                 question=question, 
@@ -209,12 +210,13 @@ def display_question():
     elif request.method == "POST":
 
         user_answer = request.form.get("useranswer")
-        if user_answer == answer:
+        if user_answer == session["answer"]:
             result = "correct!"
+
         else:
             result = "wrong. Don't gve up. Keep studying, and you'll get it right next time!"
 
-        return render_template("answer.html", result=result, answer=answer)
+        return render_template("answer.html", result=result, answer=session["answer"])
 
     else:
         flash("That is an invalid method.")
