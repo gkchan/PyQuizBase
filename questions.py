@@ -8,7 +8,7 @@ from model import User, Level, Module, Function
 # import database necessities from model module
 # from model import db, connect_to_db
 
-from random import randint, sample, shuffle
+from random import randint, choice, sample, shuffle
 
 
 # May have separate or combined functions depending on what program ultimately does
@@ -48,9 +48,13 @@ def ask_question():
     # gets all functions, may need to be adapted if database ever becomes too big
     functions = Function.query.all()
 
-    # chooses 3 random outputs from the database and adds them to multiple choice answers
-    for function in sample(functions, 3):
-        answer_choices.append(function.output)
+    # checks that output is not empty and not repeated and then adds it until there are 4 answer choices
+    while len(answer_choices) < 4:
+        function = choice(functions)
+        output = function.output
+        if output and output not in answer_choices:
+            print output
+            answer_choices.append(output)
 
     shuffle(answer_choices)
 

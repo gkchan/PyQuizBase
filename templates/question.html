@@ -8,10 +8,17 @@
   <h4>{{ input_code }}</h4>
 
   <form action = "/quiz", method = "POST">
-    {% for ans in answer_choices %}
-      <input type = "radio", name = "useranswer", value = {{ ans }}>{{ ans }}<br>
+   
+    {% for i, ans in answer_choices %}
+      <input type = "radio", name = "useranswer", value = {{ i }}>{{ ans }}<br>
     {% endfor %}<br>
     <input type = "submit", value = "Submit answer">
   </form>
 
 {% endblock %}
+
+{# commented out repetitive code:
+    <input type = "radio", name = "useranswer", value = 0 >{{ answer_choices[0] }}<br>
+    <input type = "radio", name = "useranswer", value = 1 >{{ answer_choices[1] }}<br>
+    <input type = "radio", name = "useranswer", value = 2 >{{ answer_choices[2] }}<br>
+    <input type = "radio", name = "useranswer", value = 3 >{{ answer_choices[3] }}<br> #}

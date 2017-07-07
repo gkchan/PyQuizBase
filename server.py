@@ -201,16 +201,25 @@ def display_question():
         # chooses a function entry and asks a question
         question, input_code, answer, answer_choices = ask_question()
         session["answer"] = answer
+        session["answer_choices"] = answer_choices
+
+        # print "session answer:", session["answer"]
+        # print answer_choices
 
         return render_template("question.html", 
                                 question=question, 
                                 input_code=input_code, 
-                                answer_choices=answer_choices)
+                                answer_choices=enumerate(answer_choices))
 
     elif request.method == "POST":
 
         user_answer = request.form.get("useranswer")
-        if user_answer == session["answer"]:
+
+        # print "user_answer:", user_answer
+        
+        # User answer is passed back from the form as a number corresponding 
+        # to the index of the list of answers.
+        if session["answer_choices"][int(user_answer)] == session["answer"]:
             result = "correct!"
             user = User.query.filter_by(username=session["current_user"]).first()
             user.levels.points += 1
@@ -218,7 +227,7 @@ def display_question():
                 user.levels.level = user.levels.points/5
                 flash("You've reached level {}".format(user.levels.level))
             db.session.commit()
-            print user.levels.points 
+            # print user.levels.points 
 
         else:
             result = "wrong. Don't gve up. Keep studying, and you'll get it right next time!"
@@ -241,6 +250,7 @@ if __name__ == "__main__":
 
     # for debugging
     app.debug = True
+    app.jinja_env.auto_reload = app.debug
 
     connect_to_db(app)
 
