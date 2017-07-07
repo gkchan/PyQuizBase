@@ -214,6 +214,9 @@ def display_question():
             result = "correct!"
             user = User.query.filter_by(username=session["current_user"]).first()
             user.levels.points += 1
+            if user.levels.points % 5 == 0:
+                user.levels.level = user.levels.points/5
+                flash("You've reached level {}".format(user.levels.level))
             db.session.commit()
             print user.levels.points 
 
