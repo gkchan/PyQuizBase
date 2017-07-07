@@ -212,6 +212,10 @@ def display_question():
         user_answer = request.form.get("useranswer")
         if user_answer == session["answer"]:
             result = "correct!"
+            user = User.query.filter_by(username=session["current_user"]).first()
+            user.levels.points += 1
+            db.session.commit()
+            print user.levels.points 
 
         else:
             result = "wrong. Don't gve up. Keep studying, and you'll get it right next time!"
@@ -221,16 +225,6 @@ def display_question():
     else:
         flash("That is an invalid method.")
 
-
-
-
-
-
-
-
-                      
- 
-        
 
 
 
