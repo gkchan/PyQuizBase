@@ -17,7 +17,7 @@ def load_users():
     print "Users"
 
     # delete users before data gets added to avoid duplicate info
-    User.query.delete()
+    # User.query.delete()
 
     # insert data from seed_user
     with open("seed_data/seed_user") as user_data:
@@ -44,7 +44,7 @@ def load_levels():
     print "Levels"
 
     # delete levels before data gets added to avoid duplicate info
-    Level.query.delete()
+    # Level.query.delete()
 
     # insert data from seed_level
     with open("seed_data/seed_level") as level_data:
@@ -67,7 +67,7 @@ def load_modules():
     print "Modules"
 
     # delete modules before data gets added to avoid duplicate info
-    Module.query.delete()
+    # Module.query.delete()
 
     # insert data from seed_module
     with open("seed_data/seed_module") as module_data:
@@ -90,7 +90,7 @@ def load_functions():
     print "Functions"
 
     # delete modules before data gets added to avoid duplicate info
-    Function.query.delete()
+    # Function.query.delete()
 
     # insert data from seed_function
     with open("seed_data/seed_function") as function_data:

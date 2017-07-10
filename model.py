@@ -78,7 +78,7 @@ class Function(db.Model):
     output = db.Column(db.String(256), nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
     module_id = db.Column(db.Integer, db.ForeignKey("modules.module_id"),
-                 nullable=False, default=2) # default will be unavailable in finished version if no module is put in 
+                 nullable=False, default=1) # default will be unavailable in finished version if no module is put in 
 
     def __repr__(self):
         """Show info about functions."""

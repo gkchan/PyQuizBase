@@ -1,4 +1,7 @@
+unavailable|module not added|default for functions with no module|1
+built-in|comes with python|doesn't need an import|1
+random|generates random numbers||1
+re|regular expressions|useful for searching|1
+math|math functions||1
+sqlite3|using SQLite databases||1
 placeholder name|description|additional_info|1
-unavailable|module not added(default for functions with no module)||1
-built-in|comes with python||1
-Random|description of random||1
