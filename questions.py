@@ -29,15 +29,12 @@ from random import randint, choice, sample, shuffle
 def ask_question():
     """Asks a question about the sample code and output"""
     
-    function_count = Function.query.count()
-    function_id = randint(1, function_count)
-    function_entry = Function.query.get(function_id)
+     # gets all functions with sample code and output, may need to be adapted if database ever becomes too big
+    functions = Function.query.filter(Function.sample_code != None, Function.output != None).all()
+    function_entry = choice(functions)
 
     # simple testing/debugging during development
-    print function_count, function_id, function_entry
-
-    # template not showing new line this way:
-    # sample_code_question = "What output do you get when you input the following code?\n" + function_entry.sample_code
+    print function_entry
 
     sample_code_question = "What output do you get when you input the following code?"
     sample_code = function_entry.sample_code
@@ -45,10 +42,7 @@ def ask_question():
     answer = function_entry.output
     answer_choices = [ answer ]
 
-    # gets all functions, may need to be adapted if database ever becomes too big
-    functions = Function.query.all()
-
-    # checks that output is not empty and not repeated and then adds it until there are 4 answer choices
+    # checks that output is not blank and is not repeated and then adds it until there are 4 answer choices
     while len(answer_choices) < 4:
         function = choice(functions)
         output = function.output

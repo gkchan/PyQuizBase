@@ -235,15 +235,12 @@ def display_question():
             # print user.levels.points 
 
         else:
-            result = "wrong. Don't gve up. Keep studying, and you'll get it right next time!"
+            result = "wrong. Don't give up. Keep studying, and you'll get it right next time!"
 
         return render_template("answer.html", result=result, answer=session["answer"])
 
     else:
         flash("That is an invalid method.")
-
-
-
 
 
 
