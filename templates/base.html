@@ -17,29 +17,30 @@
   <a href="/">Homepage</a>
   <a href="/register">Register</a>
 
-  {% if 'current_user' in session %}  
+  {% if "current_user" in session %}  
     <a href="/logout">Logout</a><br>
   {% else %}
     <a href="/login">Login</a>
   {% endif %}  
 
-  {% if 'current_user' in session %}
-    <h1>{{ session['current_user'] }}'s Study Session</h1>
+  {% if "current_user" in session %}
+    <h1>{{ session["current_user"] }}'s Study Session</h1>
     <a href="/{{ session["current_user"] }}/dashboard">Dashboard</a>
   {% endif %}
 
+  {% if "current_user" in session and "progress" in session %} 
+    <div class="container">
+      <h4>Progress towards next level</h4>
+      <div class="progress">
 
-  <div class="container">
-    <h4>Progress towards next level</h4>
-    <div class="progress">
-
-      <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="" aria-valuemin="0"
-      aria-valuemax="5" style="width:{{ session["progress"] }}%;">
-      {{ session["progress"] }}%
-      
+        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="" aria-valuemin="0"
+        aria-valuemax="5" style="width:{{ session["progress"] }}%;">
+        {{ session["progress"] }}%
+        
+        </div>
       </div>
     </div>
-  </div>
+  {% endif %}
 
 
   {% block content %}{% endblock %}
