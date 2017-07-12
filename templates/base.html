@@ -2,8 +2,7 @@
 <html>
 <head>
   <title>Code Program</title>
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/
-  3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
   {% block head %}{% endblock %}
 </head>
 
@@ -30,9 +29,23 @@
   {% endif %}
 
 
+  <div class="container">
+    <h4>Progress towards next level</h4>
+    <div class="progress">
+
+      <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="" aria-valuemin="0"
+      aria-valuemax="5" style="width:{{ session["progress"] }}%;">
+      {{ session["progress"] }}%
+      
+      </div>
+    </div>
+  </div>
+
+
   {% block content %}{% endblock %}
   <script src="http://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/
   3.3.7/js/bootstrap.min.js"></script>
+
 </body>
 </html>

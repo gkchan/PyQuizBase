@@ -86,9 +86,15 @@ def login():
         username = request.form.get("username")
         password = request.form.get("password")
 
-        if User.query.filter_by(username=username, password=password).first():
+        user = User.query.filter_by(username=username, password=password).first()
+        if user:
             session["current_user"] = username
             flash("Welcome. You are logged in as {}".format(username))
+            
+            # shows percentage of progress towards next level
+            remainder = user.levels.points % 5 
+            progress = remainder * 100 / 5
+            session["progress"] = progress
         else:
             flash("Username or password does not match. Please try again.")
 
@@ -230,9 +236,13 @@ def display_question():
             user.levels.points += 1
             if user.levels.points % 5 == 0:
                 user.levels.level = user.levels.points/5
-                flash("You've reached level {}".format(user.levels.level))
+                flash("CONGRATULATIONS!!! You've reached level {}".format(user.levels.level))
             db.session.commit()
             # print user.levels.points 
+
+            remainder = user.levels.points % 5 
+            progress = remainder * 100 / 5
+            session["progress"] = progress
 
         else:
             result = "wrong. Don't give up. Keep studying, and you'll get it right next time!"
