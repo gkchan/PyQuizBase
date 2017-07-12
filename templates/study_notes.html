@@ -5,45 +5,44 @@
 
   <a href="/{{ username }}/addmodules">Add Modules/Functions</a>
   
-  
+<!-- Labels are for coloring -->
 
   <table style="width:100%" class="table table-bordered table-hover">
-    <tr>
+    
+    <tr class="info">
       <th>Module Name</th>
       <th>Description</th>
       <th>Additional Info</th>
     </tr>
     {% for mod in study_table %}
-    <tr>
-      <td>{{ mod.name }}</td>  
-      <td>{{ mod.description }}</td>  
-      <td>{{ mod.additional_info }}</td>  
-    </tr>
+      <tr class="success">
+        <td>{{ mod.name }}</td>  
+        <td>{{ mod.description }}</td>  
+        <td>{{ mod.additional_info }}</td>  
+      </tr>
+      {% if mod.functions %}
+        <tr>
+          <tr class="danger">
+            <th>Function Name</th>
+            <th>Description</th>
+            <th>Additional Info</th>
+            <th>Example</th>
+          </tr>
+          {% for func in mod.functions %}
+            <tr class="warning">
+              <td>{{ func.name }}</td>
+              <td>{{ func.description }}</td>
+              <td>{{ func.additional_info }}</td>
+              <td>{% if func.sample_code and func.output %}
+                {{ func.sample_code }} -> {{ func.output }}
+                {% endif %}</td>
+            </tr>
+          {% endfor %}
+        </tr>
+      {% endif %}
     {% endfor %}
   </table>
  
-
- 
-
-      {# 
-        <table class="table-bordered">
-        <tr>
-          <th>Function Name</th>
-          <th>Description</th>
-          <th>Additional Info</th>
-          <th>Example</th>
-        
-         {% for func in mod.functions %}
-        </tr>
-          <td>{{ func.name }}</td>
-          <td>{{ func.description }}</td>
-          <td>{{ func.additional_info }}</td>
-          <td>{{ func.sample_code }}:{{ func.output }}</td>
-        </tr>
-        {% endfor %}
-
-         </table> #}
-
 
 
 
