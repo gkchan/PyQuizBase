@@ -5,18 +5,46 @@
 
   <a href="/{{ username }}/addmodules">Add Modules/Functions</a>
   
-  <ol>
-  {% for mod in study_table %}
+  
 
-      <li>Module Name: {{ mod.name }} Desc: {{ mod.description }} Info: {{ mod.additional_info }} <br><br>
+  <table style="width:100%" class="table table-bordered table-hover">
+    <tr>
+      <th>Module Name</th>
+      <th>Description</th>
+      <th>Additional Info</th>
+    </tr>
+    {% for mod in study_table %}
+    <tr>
+      <td>{{ mod.name }}</td>  
+      <td>{{ mod.description }}</td>  
+      <td>{{ mod.additional_info }}</td>  
+    </tr>
+    {% endfor %}
+  </table>
+ 
 
-        {% for func in mod.functions %}
-          Function Name: {{ func.name }} <br>
-          Desc: {{ func.description }}, {{ func.additional_info }} <br> 
-          Example: {{ func.sample_code }}: {{ func.output }}</li><br>
-        {% endfor %}<br>
+ 
 
-  {% endfor %}
-</ol> 
+      {# 
+        <table class="table-bordered">
+        <tr>
+          <th>Function Name</th>
+          <th>Description</th>
+          <th>Additional Info</th>
+          <th>Example</th>
+        
+         {% for func in mod.functions %}
+        </tr>
+          <td>{{ func.name }}</td>
+          <td>{{ func.description }}</td>
+          <td>{{ func.additional_info }}</td>
+          <td>{{ func.sample_code }}:{{ func.output }}</td>
+        </tr>
+        {% endfor %}
+
+         </table> #}
+
+
+
 
 {% endblock %}
