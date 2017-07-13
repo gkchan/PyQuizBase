@@ -147,10 +147,12 @@ def show_study_notes(username):
     # verify_user(username)
 
     study_table = db.session.query(Module).all()
-        
+    empty_mod = [ mod.module_id for mod in study_table if mod.functions == [] ]
+
     return render_template("study_notes.html", 
                             study_table=study_table, 
-                            username=username)
+                            username=username,
+                            empty_mod=empty_mod)
 
 
 @app.route("/<username>/addmodules", methods=["GET", "POST"])

@@ -1,11 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 
+
   <h3>Modules/Functions Info</h3>
 
-  <a href="/{{ username }}/addmodules">Add Modules/Functions</a>
+  <a href="/{{ username }}/addmodules">Add Modules/Functions</a><br><br>
   
-<!-- Labels are for coloring -->
+  <b>If the module contains function entries, clicking on it will show them.</b>
+<!-- Some class labels are for coloring -->
+
 
   <table style="width:100%" class="table table-bordered table-hover">
     
@@ -15,21 +18,21 @@
       <th>Additional Info</th>
     </tr>
     {% for mod in study_table %}
-      <tr class="success">
+      <tr class="mod{{ mod.module_id }} success">
         <td>{{ mod.name }}</td>  
         <td>{{ mod.description }}</td>  
         <td>{{ mod.additional_info }}</td>  
       </tr>
       {% if mod.functions %}
         <tr>
-          <tr class="danger">
+          <tr class="func{{ mod.module_id }} func danger">
             <th>Function Name</th>
             <th>Description</th>
             <th>Additional Info</th>
             <th>Example</th>
           </tr>
           {% for func in mod.functions %}
-            <tr class="warning">
+            <tr class="func{{ mod.module_id }} func warning">
               <td>{{ func.name }}</td>
               <td>{{ func.description }}</td>
               <td>{{ func.additional_info }}</td>
@@ -42,8 +45,29 @@
       {% endif %}
     {% endfor %}
   </table>
+
+{% endblock %}
+
+{% block js %}
+
+  <script>
+    "use strict";
+    $(".func").hide();
+  </script>
+
+  {% for mod in study_table %}
+    <script>
+      "use strict";
+      $(".mod{{ mod.module_id }}").on("click", function () { $(".func{{ mod.module_id }}").fadeToggle(800); });
+    </script>
+  {% endfor %}
+
+  {% for module_id in empty_mod %}
+    <script>
+      "use strict";
+      $(".mod{{ module_id }}").on("click", function () { alert("This module does not have functions."); });
+    </script>
+  {% endfor %}
+  
  
-
-
-
 {% endblock %}
