@@ -3,16 +3,17 @@
 
   <h1>Question:<h1>
 
-  <h4>{{ question }}</h4>
+  <h4>{{ question }}</h4><br>  
 
-  <h4>{{ input_code }}</h4>
+  <h4>{{ input_code }}</h4><br>
 
-  <form action = "/quiz", method = "POST">
+  <form action = "/quiz" method = "POST">
    
     {% for i, ans in answer_choices %}
-      <input type = "radio", name = "useranswer", value = {{ i }}>{{ ans }}<br>
+      <button type = "submit" name = "useranswer" value = {{ i }} 
+      class="btn btn-info btn-lg btn-block" style="width:60%">{{ ans }}</button><br>
     {% endfor %}<br>
-    <input type = "submit", value = "Submit answer">
+  
   </form>
 
 {% endblock %}
