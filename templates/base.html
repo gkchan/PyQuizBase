@@ -25,7 +25,7 @@
 
   {% if "current_user" in session %}
     <h1>{{ session["current_user"] }}'s Study Session</h1>
-    <a href="/{{ session["current_user"] }}/dashboard">Dashboard</a>
+    <a href="/{{ session["current_user"] }}/dashboard" id="dash">Dashboard</a>
   {% endif %}
 
   {% if "current_user" in session and "progress" in session %} 
