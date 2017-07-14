@@ -3,14 +3,17 @@
 
   <h3>Add Modules/Functions</h3>
 
-  <form action="/{{ username }}/addmodules", method="POST">
-    Module Name: <input type="text", name="mname"><br>
-    Module Description: <input type="text", name="mdesc"><br>
-    Function Name: <input type="text", name="fname"><br>
-    Function Description: <input type="text", name="fdesc"><br>
-    Function Sample Code: <input type="text", name="samplecode"><br>
-    Function Output: <input type="text", name="output"><br><br>
-    <input type="submit", value="Add New Function Info">
+  <form action="/{{ username }}/addmodules" method="POST">
+    Module Name: <input type="text" name="mname"><br>
+    Module Description: <textarea name="mdesc" class="form-control" rows="2" style="width:90%"></textarea>
+    <br><br>
+    Function Name: <input type="text" name="fname"><br>
+    Function Description: <textarea name="fdesc" class="form-control" rows="2" style="width:90%"></textarea><br>
+    Example Code:<br><br>
+    Function code to run: <textarea name="samplecode" class="form-control" rows="1" style="width:90%"></textarea><br>
+    Function output: <textarea name="output" class="form-control" rows="1" style="width:90%"></textarea><br><br>
+    <input type="submit" value="Add New Function Info">
+
   </form>
 
 {% endblock %}
