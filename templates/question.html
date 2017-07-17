@@ -7,7 +7,7 @@
 
   <h4>{{ input_code }}</h4><br>
 
-  <form action = "/quiz" method = "POST">
+  <form action = "/{{ session["current_user"] }}/quiz" method = "POST">
    
     {% for i, ans in answer_choices %}
       <button type = "submit" name = "useranswer" value = {{ i }} 

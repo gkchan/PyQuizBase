@@ -116,16 +116,19 @@ def logout():
 def verify_user(username):
     """Verify user login"""
 
-    if ("current_user" in session and session["current_user"] == username) == False:
+    if ("current_user" in session and session["current_user"] == username) == True:
+        return True
+    else:
         flash("Please login.")
-        return redirect("/login")
-   
-
+        return False
+           
+        
 @app.route("/<username>/dashboard")
 def show_dashboard(username):
     """Show student dashboard"""
 
-    verify_user(username)
+    if not verify_user(username):
+        return redirect("/login")
     
     return render_template("dashboard.html", username=session["current_user"])
 
@@ -134,18 +137,20 @@ def show_dashboard(username):
 def show_user_info(username):
     """Show user info"""
 
-    verify_user(username)
+    if not verify_user(username):
+        return redirect("/login")
 
     user = User.query.filter_by(username=username).first()
     return render_template("user_info.html",
-                            user=user)
+                        user=user)
 
 
 @app.route("/<username>/studynotes")
 def show_study_notes(username):
     """Show study notes"""
-
-    # verify_user(username)
+    
+    if not verify_user(username):
+        return redirect("/login")
 
     study_table = db.session.query(Module).all()
     empty_mod = [ mod.module_id for mod in study_table if mod.functions == [] ]
@@ -162,7 +167,8 @@ def show_add_modules(username):
 
     # currently only handles basic adding of info
 
-    # verify_user(username)
+    if not verify_user(username):
+        return redirect("/login")
 
     return render_template("add_modules.html", username=username)
 
@@ -207,9 +213,12 @@ def add_modules(username):
     return redirect("/{}/studynotes".format(username))
 
 
-@app.route("/quiz", methods=["GET"])
-def show_question():
+@app.route("/<username>/quiz", methods=["GET"])
+def show_question(username):
     """Displays question to answer"""
+
+    if not verify_user(username):
+        return redirect("/login")
 
     # chooses a function entry and asks a question
     question, input_code, answer, answer_choices = ask_question()
@@ -225,8 +234,8 @@ def show_question():
                             answer_choices=enumerate(answer_choices))
 
 
-@app.route("/quiz", methods=["POST"])
-def process_question():
+@app.route("/<username>/quiz", methods=["POST"])
+def process_question(username):
     """Processes student answer and displays results with answer."""
 
     user_answer = request.form.get("useranswer")
