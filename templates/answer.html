@@ -5,6 +5,14 @@
 
 The correct answer is: {{ answer }}</p><br>
 
-<a href="/{{ session["current_user"] }}/quiz">Next Question</a>
+<a href="/{{ session["current_user"] }}/quiz">Next Question</a><br><br>
 
+<a href="/{{ session["current_user"] }}/dashboard">Exit Quiz</a>
+
+{% endblock %}
+
+{% block js %}
+  <script>
+  $("#dash").hide();
+  </script>
 {% endblock %}
