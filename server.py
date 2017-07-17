@@ -192,11 +192,7 @@ def add_modules(username):
                     user_id=user.user_id)
 
     db.session.add(module)
-
-    # fetch module to get module_id
-    module = Module.query.filter_by(name=mname,
-                                    description=mdesc,
-                                    user_id=user.user_id).first()
+    db.session.commit()   
 
     function = Function(name=fname, 
                         description=fdesc, 
