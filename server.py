@@ -152,7 +152,9 @@ def show_study_notes(username):
     if not verify_user(username):
         return redirect("/login")
 
-    study_table = db.session.query(Module).all()
+    user = User.query.filter_by(username=username).first()
+    study_table = Module.query.filter( (Module.user_id == user.user_id) | (Module.user_id == 1) ).all()
+    # print study_table
     empty_mod = [ mod.module_id for mod in study_table if mod.functions == [] ]
 
     return render_template("study_notes.html", 
