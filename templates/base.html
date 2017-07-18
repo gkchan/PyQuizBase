@@ -14,19 +14,45 @@
     {% endfor %}
   </ul>
 
-  <a href="/">Homepage</a>
-  <a href="/register">Register</a>
 
-  {% if "current_user" in session %}  
-    <a href="/logout">Logout</a><br>
-  {% else %}
-    <a href="/login">Login</a>
-  {% endif %}  
 
-  {% if "current_user" in session %}
-    <h1>{{ session["current_user"] }}'s Study Session</h1>
-    <a href="/{{ session["current_user"] }}/dashboard" id="dash">Dashboard</a>
-  {% endif %}
+
+<nav class="navbar">
+  <div class="container-fluid">
+
+    <div class="row navbar-default">
+      <div class="col-xs-4">
+        <a href="/">Homepage</a>
+      </div>
+      <div class="col-xs-offset-6 col-xs-2 navbar-right">
+        <a href="/register">Register</a>
+        {% if "current_user" in session %}  
+          <a href="/logout">Logout</a><br>
+        {% else %}
+          <a href="/login">Login</a>
+        {% endif %} 
+      </div>
+    </div>
+ 
+    <div class="row">
+      <div class="col-xs-offset-5 col-xs-2">
+        {% if "current_user" in session %}
+          <a href="/{{ session["current_user"] }}/dashboard" id="dash"><h4>Dashboard</h4></a>
+        {% endif %}
+      </div>
+    </div> 
+
+  </div>
+</nav>
+
+
+{% if "current_user" in session %}
+  <h2>{{ session["current_user"] }}'s Study Session</h2>
+{% endif %}
+
+  
+
+
 
   {% if "current_user" in session and "progress" in session %} 
     <div class="container">
