@@ -88,14 +88,27 @@ class Function(db.Model):
 
 #Helper functions
 
-def connect_to_db(app):
+def connect_to_db(app, db_uri="postgresql:///code"):
     """Connects the database to Flask app"""
 
     #Configure for use with our PostgreSQL database.
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///code'
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.app = app
     db.init_app(app)
+
+
+def sample_data():
+    """Makes sample data for a test database."""
+
+    testuser = User(username="user", password="pw", first_name="testf", last_name="testl", email="test@gmail.com")
+    testlevel = Level(user_id=1, level=5, points=25)
+    module1 = Module(name="testmod", description="moddesc", user_id=1)
+    func1 = Function(name="func", description="funcdesc", user_id=1)
+
+    db.session.add_all([testuser, testlevel, module1, func1])
+ 
+    db.session.commit()
 
 
 if __name__ == "__main__":

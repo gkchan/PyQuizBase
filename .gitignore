@@ -2,3 +2,5 @@ env
 *pyc
 *.DS_store
 unused
+.coverage
+htmlcov/
