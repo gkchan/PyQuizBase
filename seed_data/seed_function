@@ -5,5 +5,4 @@ range|returns a list of integers in that range|endpoint is exlusive|range(2,6)|[
 choice|chooses a random element from a sequence||||2|3
 floor|returns the largest integer less than or equal to a given number as a float||floor(4.5)|4.0|1|5
 pow|for exponents||pow(3, 2)|9|1|5
-placeholder name|description|additional_info|sample_code|output|3|1
 print|can print to console||||3|2
