@@ -189,12 +189,17 @@ def add_modules(username):
     # fetch user to get user_id
     user = User.query.filter_by(username=username).first()
 
-    module = Module(name=mname,
-                    description=mdesc,
-                    user_id=user.user_id)
+    existing_mod = Module.query.filter( ( Module.user_id==user.user_id) | (Module.user_id==1), Module.name==mname).first()
 
-    db.session.add(module)
-    db.session.commit()   
+    if existing_mod:
+        module = existing_mod  
+    else:
+        module = Module(name=mname,
+                        description=mdesc,
+                        user_id=user.user_id)
+
+        db.session.add(module)
+        db.session.commit()        
 
     function = Function(name=fname, 
                         description=fdesc, 
