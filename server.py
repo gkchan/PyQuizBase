@@ -90,7 +90,7 @@ def login():
     user = User.query.filter_by(username=username, password=password).first()
     if user:
         session["current_user"] = username
-        flash("Welcome. You are logged in as {}".format(username))
+        flash("Welcome! You are logged in as {}.".format(username))
         
         # shows percentage of progress towards next level
         remainder = user.levels.points % 5 
