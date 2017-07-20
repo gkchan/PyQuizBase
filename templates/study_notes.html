@@ -1,59 +1,62 @@
 {% extends "base.html" %}
 {% block content %}
 
+  <div class="col-xs-offset-1 col-xs-10">
 
-  <h3>Modules/Functions Info</h3>
+    <h3>Modules/Functions Info</h3>
 
-  <a href="/{{ username }}/addmodules">Add Modules/Functions</a><br><br>
-  
-  <b>If the module contains function entries, clicking on it will show them.</b>
-<!-- Some class labels are for coloring -->
-
-
-  <table style="width:100%" class="table table-bordered table-hover">
+    <a href="/{{ username }}/addmodules">Add Modules/Functions</a><br><br>
     
-    <tr class="info">
-      <th>Module Name</th>
-      <th>Description</th>
-      <th>Additional Info</th>
-    </tr>
+    <b>If the module contains function entries, clicking on it will show them.</b>
+  <!-- Some class labels are for coloring -->
 
-    {% for mod in study_table %}
-      <tr class="mod{{ mod.module_id }} success">
-        <td>{{ mod.name }}</td>  
-        <td>{{ mod.description }}</td>  
-        <td>{{ mod.additional_info }}</td>  
+
+    <table style="width:100%" class="table table-bordered table-hover">
+      
+      <tr class="info">
+        <th>Module Name</th>
+        <th>Description</th>
+        <th>Additional Info</th>
       </tr>
 
-      {% if mod.functions %}
-        <tr class="func{{ mod.module_id }} func">
-          <td colspan=3>
-
-            <table style="width:98%" class="table table-bordered table-hover">
-
-              <tr class="danger">
-                <th>Function Name</th>
-                <th>Description</th>
-                <th>Additional Info</th>
-                <th>Example</th>
-              </tr>
-    
-              {% for func in mod.functions %}
-                <tr class="func{{ mod.module_id }} func warning">
-                  <td>{{ func.name }}</td>
-                  <td>{{ func.description }}</td>
-                  <td>{{ func.additional_info }}</td>
-                  <td>{% if func.sample_code and func.output %}
-                    {{ func.sample_code }} -> {{ func.output }}
-                    {% endif %}</td>
-                </tr>
-              {% endfor %}
-
-            </table>
+      {% for mod in study_table %}
+        <tr class="mod{{ mod.module_id }} success">
+          <td>{{ mod.name }}</td>  
+          <td>{{ mod.description }}</td>  
+          <td>{{ mod.additional_info }}</td>  
         </tr>
-      {% endif %}
-    {% endfor %}
-  </table>
+
+        {% if mod.functions %}
+          <tr class="func{{ mod.module_id }} func">
+            <td colspan=3>
+
+              <table style="width:98%" class="table table-bordered table-hover">
+
+                <tr class="danger">
+                  <th>Function Name</th>
+                  <th>Description</th>
+                  <th>Additional Info</th>
+                  <th>Example</th>
+                </tr>
+      
+                {% for func in mod.functions %}
+                  <tr class="func{{ mod.module_id }} func warning">
+                    <td>{{ func.name }}</td>
+                    <td>{{ func.description }}</td>
+                    <td>{{ func.additional_info }}</td>
+                    <td>{% if func.sample_code and func.output %}
+                      {{ func.sample_code }} -> {{ func.output }}
+                      {% endif %}</td>
+                  </tr>
+                {% endfor %}
+
+              </table>
+          </tr>
+        {% endif %}
+      {% endfor %}
+    </table>
+
+  </div>
 
 {% endblock %}
 
