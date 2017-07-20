@@ -1,22 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
 
-  <h1>Question:<h1>
+  <div class="col-xs-offset-3">
 
-  <h4>{{ question }}</h4><br>  
+    <h1>Question:<h1>
 
-  <h4>{{ input_code }}</h4><br>
+    <h4>{{ question }}</h4><br>  
 
-  <form action="/{{ session["current_user"] }}/quiz" method="POST">
-   
-    {% for i, ans in answer_choices %}
-      <button type="submit" name="useranswer" value={{ i }} 
-      class="btn btn-info btn-lg btn-block" style="width:60%">{{ ans }}</button><br>
-    {% endfor %}<br>
-  
-  </form>
+    <h4>{{ input_code }}</h4><br>
 
-  <a href="/{{ session["current_user"] }}/dashboard">Exit Quiz</a>
+    <form action="/{{ session["current_user"] }}/quiz" method="POST">
+     
+      {% for i, ans in answer_choices %}
+        <button type="submit" name="useranswer" value={{ i }} 
+        class="btn btn-info btn-lg btn-block" style="width:60%">{{ ans }}</button><br>
+      {% endfor %}<br>
+    
+    </form>
+
+    <a href="/{{ session["current_user"] }}/dashboard">Exit Quiz</a>
+
+  </div>
 
 {% endblock %}
 
