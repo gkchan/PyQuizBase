@@ -3,6 +3,13 @@
 <head>
   <title>Code Program</title>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    .nav-color {
+    background-color: orange;
+  }
+  </style>
+
   {% block head %}{% endblock %}
 </head>
 
@@ -17,7 +24,7 @@
 
 
 
-<nav class="navbar">
+<nav class="navbar nav-color">
   <div class="container-fluid">
 
     <div class="row navbar-default">
@@ -37,7 +44,7 @@
     <div class="row">
       <div class="col-xs-offset-5 col-xs-2">
         {% if "current_user" in session %}
-          <a href="/{{ session["current_user"] }}/dashboard" id="dash"><h4>Dashboard</h4></a>
+          <a href="/{{ session["current_user"] }}/dashboard" id="dash" class="btn active"><h4>Dashboard</h4></a>
         {% endif %}
       </div>
     </div> 
