@@ -24,56 +24,59 @@
 
 
 
-<nav class="navbar nav-color">
-  <div class="container-fluid">
+  <nav class="navbar nav-color">
+    <div class="container-fluid">
 
-    <div class="row navbar-default">
-      <div class="col-xs-4">
-        <a href="/">Homepage</a>
-      </div>
-      <div class="col-xs-offset-6 col-xs-2 navbar-right">
-        <a href="/register">Register</a>
-        {% if "current_user" in session %}  
-          <a href="/logout">Logout</a><br>
-        {% else %}
-          <a href="/login">Login</a>
-        {% endif %} 
-      </div>
-    </div>
- 
-    <div class="row">
-      <div class="col-xs-offset-5 col-xs-2">
-        {% if "current_user" in session %}
-          <a href="/{{ session["current_user"] }}/dashboard" id="dash" class="btn active"><h4>Dashboard</h4></a>
-        {% endif %}
-      </div>
-    </div> 
-
-  </div>
-</nav>
-
-
-{% if "current_user" in session %}
-  <h2>{{ session["current_user"] }}'s Study Session</h2>
-{% endif %}
-
-  
-
-
-
-  {% if "current_user" in session and "progress" in session %} 
-    <div class="container">
-      <h4>Progress towards next level</h4>
-      <div class="progress">
-
-        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="" aria-valuemin="0"
-        aria-valuemax="5" style="width:{{ session["progress"] }}%;">
-        {{ session["progress"] }}%
-        
+      <div class="row navbar-default">
+        <div class="col-xs-4">
+          <a href="/">Homepage</a>
+        </div>
+        <div class="col-xs-offset-6 col-xs-2 navbar-right">
+          <a href="/register">Register</a>
+          {% if "current_user" in session %}  
+            <a href="/logout">Logout</a><br>
+          {% else %}
+            <a href="/login">Login</a>
+          {% endif %} 
         </div>
       </div>
+   
+      <div class="row">
+        <div class="col-xs-offset-5 col-xs-2">
+          {% if "current_user" in session %}
+            <a href="/{{ session["current_user"] }}/dashboard" id="dash" class="btn active"><h4>Dashboard</h4></a>
+          {% endif %}
+        </div>
+      </div> 
+
     </div>
-  {% endif %}
+  </nav>
+
+
+  <div class="col-xs-offset-1 col-xs-10">
+
+    {% if "current_user" in session %}
+      <h2>{{ session["current_user"] }}'s Study Session</h2>
+    {% endif %}
+
+
+    {% if "current_user" in session and "progress" in session %} 
+      <div class="container">
+        <h4>Progress towards next level</h4>
+        <div class="progress">
+
+          <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="" aria-valuemin="0"
+          aria-valuemax="5" style="width:{{ session["progress"] }}%;">
+          {{ session["progress"] }}%
+          
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+    <br><br><br>
+  </div>
+
 
 
   {% block content %}{% endblock %}
