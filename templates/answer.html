@@ -1,13 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 
-<p>Your answer is {{ result }}<br>
+  <div class="col-xs-offset-2 col-xs-8">
 
-The correct answer is: {{ answer }}</p><br>
+    <p>Your answer is {{ result }}<br>
 
-<a href="/{{ session["current_user"] }}/quiz">Next Question</a><br><br>
+    The correct answer is: {{ answer }}</p><br>
 
-<a href="/{{ session["current_user"] }}/dashboard">Exit Quiz</a>
+    <a href="/{{ session["current_user"] }}/quiz">Next Question</a><br><br>
+
+    <a href="/{{ session["current_user"] }}/dashboard">Exit Quiz</a>
+
+  </div>
 
 {% endblock %}
 
