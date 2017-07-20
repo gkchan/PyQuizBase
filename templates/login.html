@@ -1,12 +1,15 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% block content %}
 
-    <h4>Login.</h4>
-    
+  <br><br><br><br>
+
+  <div class="col-xs-offset-4 col-xs-4">
+    <h4>Login</h4><br>
     <form action="/login", method="POST">
         Username: <input type="text", name="username"><br>
         Password: <input type="password", name="password"><br><br>
         <input type="submit", value="Login">
     </form>
+  </div>
 
 {% endblock %}
