@@ -227,6 +227,7 @@ def show_question(username):
     question, input_code, answer, answer_choices = ask_question()
     session["answer"] = answer
     session["answer_choices"] = answer_choices
+    # session["function name"] = func_name
 
     # print "session answer:", session["answer"]
     # print answer_choices
@@ -264,7 +265,12 @@ def process_question(username):
     else:
         result = "wrong. Don't give up. Keep studying, and you'll get it right next time!"
 
+
+
     return render_template("answer.html", result=result, answer=session["answer"])
+
+
+
 
 
 
@@ -274,7 +280,7 @@ def process_question(username):
 if __name__ == "__main__":
 
     # for debugging
-    app.debug = False
+    app.debug = True
     app.jinja_env.auto_reload = app.debug
 
     connect_to_db(app)
