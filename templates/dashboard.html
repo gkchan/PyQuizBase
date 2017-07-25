@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+
   
   <div class="container-fluid col-xs-offset-2">
+
 
     {% if 'current_user' in session %}
       <h3>{{ session['current_user'] }}'s Dashboard</h3>

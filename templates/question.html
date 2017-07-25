@@ -1,11 +1,29 @@
 {% extends "base.html" %}
-{% block content %}
 
-  <div class="col-xs-offset-3">
+{% block head %}
+  <style>
+    a {
+      /*text-align: right;*/
+      color: blue;
+    }
+
+    div {
+      /*border: solid 1px black;*/
+    }
+
+    #question {
+      border: solid 1px black;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+  <h4><a href="/{{ session["current_user"] }}/dashboard" id="exit" class="btn active">Exit Quiz</a></h4>
+  <div id="question" class="col-xs-offset-3 col-xs-6">
 
     <h1>Question:<h1>
 
-    <h4>{{ question }}</h4><br>  
+    <h4>{{ question }}</h4>
 
     <h4>{{ input_code }}</h4><br>
 
@@ -13,12 +31,12 @@
      
       {% for i, ans in answer_choices %}
         <button type="submit" name="useranswer" value={{ i }} 
-        class="btn btn-info btn-lg btn-block" style="width:60%">{{ ans }}</button><br>
+        class="btn btn-info btn-lg btn-block" style="width:100%">{{ ans }}</button><br>
       {% endfor %}<br>
     
     </form>
 
-    <a href="/{{ session["current_user"] }}/dashboard">Exit Quiz</a>
+  
 
   </div>
 

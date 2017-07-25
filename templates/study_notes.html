@@ -1,4 +1,27 @@
 {% extends "base.html" %}
+
+{% block head %}
+  <style>
+    .modtitle {
+      background-color: #81d6e3;
+    }
+
+    .modinfo {
+      background-color: #b2ddf7;
+    }
+  
+    .functitle {
+      background-color: #8ed081;
+    }
+
+    .funcinfo {
+      background-color: #96E6B3;
+
+
+    }
+  </style>
+{% endblock %}
+
 {% block content %}
 
   <br><br><br><br><br><br><br>
@@ -24,14 +47,14 @@
 
     <table style="width:100%" class="table table-bordered table-hover">
       
-      <tr class="info">
+      <tr class="table-hover modtitle" >
         <th>Module Name</th>
         <th>Description</th>
         <th>Additional Info</th>
       </tr>
 
       {% for mod in study_table %}
-        <tr class="mod{{ mod.module_id }} success">
+        <tr class="modinfo mod{{ mod.module_id }}">
           <td>{{ mod.name }}</td>  
           <td>{{ mod.description }}</td>  
           <td>{{ mod.additional_info }}</td>  
@@ -43,7 +66,7 @@
 
               <table style="width:98%" class="table table-bordered table-hover">
 
-                <tr class="danger">
+                <tr class="functitle">
                   <th>Function Name</th>
                   <th>Description</th>
                   <th>Additional Info</th>
@@ -51,7 +74,7 @@
                 </tr>
       
                 {% for func in mod.functions %}
-                  <tr class="func{{ mod.module_id }} func warning">
+                  <tr class="funcinfo func{{ mod.module_id }} func">
                     <td>{{ func.name }}</td>
                     <td>{{ func.description }}</td>
                     <td>{{ func.additional_info }}</td>

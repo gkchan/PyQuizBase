@@ -6,13 +6,27 @@
 
   <style>
     .nav-color {
-    background-color: #8dafd6;
-  }
+       background-color: #acc4e1;
+    }
 
-  body {
-    background-color: #c3b8fc;
+    body {
+
+      background-color: #c3b8fc;
+      font-family: serif;
+
+      background: url(static/img/python_image.jpg);
+      /*background: url(static/img/embossed_paper_@2X.png);*/
+      background-size: cover;
+
+      
+    }
+
+    #dash {
     
-  }
+       background-color: #8dafd6;
+       font-family: cursive;
+    }
+
 
 
   </style>
@@ -46,7 +60,7 @@
       <div class="row">
         <div class="col-xs-offset-5 col-xs-2">
           {% if "current_user" in session %}
-            <a href="/{{ session["current_user"] }}/dashboard" id="dash" class="btn active"><h4>Dashboard</h4></a>
+            <a href="/{{ session["current_user"] }}/dashboard" id="dash" class="btn btn-lg active"><h3><strong>Dashboard</strong></h3></a>
           {% endif %}
         </div>
       </div> 
@@ -84,7 +98,7 @@
       </div>
     {% endif %}
 
-    <br><br><br>
+    <br>
   </div>
 
 

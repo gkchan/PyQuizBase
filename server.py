@@ -270,7 +270,9 @@ def process_question(username):
     return render_template("answer.html", result=result, answer=session["answer"])
 
 
-
+# References:
+# https://www.w3schools.com/
+# https://coolors.co/
 
 
 
@@ -280,7 +282,7 @@ def process_question(username):
 if __name__ == "__main__":
 
     # for debugging
-    app.debug = True
+    app.debug = False
     app.jinja_env.auto_reload = app.debug
 
     connect_to_db(app)
