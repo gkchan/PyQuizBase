@@ -2,23 +2,33 @@
 
 {% block head %}
   <style>
-    a {
-      /*text-align: right;*/
-      color: blue;
-    }
 
-    div {
-      /*border: solid 1px black;*/
+    #exit {
+      align-items: right;
+    /*  color: black;
+      background-color: powderblue;
+      background-color: royalblue;
+      background-color: lightskyblue;*/
     }
 
     #question {
       border: solid 1px black;
     }
+
+    .button {
+
+      background-color: powderblue;
+
+    }
+
+
   </style>
 {% endblock %}
 
 {% block content %}
-  <h4><a href="/{{ session["current_user"] }}/dashboard" id="exit" class="btn active">Exit Quiz</a></h4>
+
+  <h4><a href="/{{ session["current_user"] }}/dashboard" id="exit" class="class-xs-offset-11 class-xs-1 btn btn-info active">Exit Quiz<a></h4>
+
   <div id="question" class="col-xs-offset-3 col-xs-6">
 
     <h1>Question:<h1>
@@ -44,6 +54,6 @@
 
 {% block js %}
   <script>
-  $("#dash").hide();
+    $("#dash").hide();
   </script>
 {% endblock %}

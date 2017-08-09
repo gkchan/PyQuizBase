@@ -1,15 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 
+    <h4><a href="/{{ session["current_user"] }}/dashboard" id="exit" class="class-xs-offset-11 class-xs-1 btn btn-info active">Exit Quiz<a></h4>
+
   <div class="col-xs-offset-2 col-xs-8">
 
     <p>Your answer is {{ result }}<br>
 
     The correct answer is: {{ answer }}</p><br>
 
-    <a href="/{{ session["current_user"] }}/quiz">Next Question</a><br><br>
+    <a href="/{{ session["current_user"] }}/quiz" class="btn active">Next Question</a><br><br>
 
-    <a href="/{{ session["current_user"] }}/dashboard">Exit Quiz</a>
+    <!-- <a href="/{{ session["current_user"] }}/dashboard">Exit Quiz</a> -->
 
   </div>
 
@@ -17,6 +19,6 @@
 
 {% block js %}
   <script>
-  $("#dash").hide();
+    $("#dash").hide();
   </script>
 {% endblock %}

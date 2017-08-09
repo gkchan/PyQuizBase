@@ -2,23 +2,45 @@
 
 {% block head %}
   <style>
+
+
     .modtitle {
-      background-color: #81d6e3;
+      background-color: lightcyan;
+      background-color: deepskyblue;
+      background-color: #b2ddf7;
+      background-color: skyblue;
     }
 
     .modinfo {
+      
       background-color: #b2ddf7;
+      background-color: lightcyan;
+
     }
   
+
     .functitle {
-      background-color: #8ed081;
+      background-color: lightcyan;
+      background-color: plum;
+      background-color: slateblue;
+      background-color: mediumpurple;
+      background-color: orchid;
+      background-color: violet;
+      background-color: #8d6a9f;
+      background-color: #9395d3;
     }
+
 
     .funcinfo {
-      background-color: #96E6B3;
-
+      background-color: lightcyan;
+      background-color: lavender;
 
     }
+
+ /*   .btn {
+
+      background-color: #8dafd6;
+    }*/
   </style>
 {% endblock %}
 
@@ -26,11 +48,11 @@
 
   <br><br><br><br><br><br><br>
 
-  <div class="col-xs-offset-1 col-xs-10 alert alert-warning alert-dismissible" role="alert">
+  <div class="col-xs-offset-2 col-xs-8 alert alert-warning alert-dismissible" role="alert" id="nomod">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
-    <h3><strong>This module does not have functions!</strong></h3>
+    <h4><strong>This module does not have functions!</strong></h4>
   </div>
 
 
@@ -39,7 +61,7 @@
 
     <h3>Modules/Functions Info</h3>
 
-    <a href="/{{ username }}/addmodules">Add Modules/Functions</a><br><br>
+    <a href="/{{ username }}/addmodules" class="btn active">Add Modules/Functions</a><br><br>
     
     <b>If the module contains function entries, clicking on it will show them.</b>
   <!-- Some class labels are for coloring -->
@@ -47,7 +69,7 @@
 
     <table style="width:100%" class="table table-bordered table-hover">
       
-      <tr class="table-hover modtitle" >
+      <tr class="table-hover modtitle">
         <th>Module Name</th>
         <th>Description</th>
         <th>Additional Info</th>
@@ -64,7 +86,7 @@
           <tr class="func{{ mod.module_id }} func">
             <td colspan=3>
 
-              <table style="width:98%" class="table table-bordered table-hover">
+              <table style="width:99%" class="table table-bordered table-hover">
 
                 <tr class="functitle">
                   <th>Function Name</th>
@@ -99,7 +121,7 @@
   <script>
     "use strict";
     $(".func").hide();
-    $(".alert").hide();
+    $("#nomod").hide();
 
   </script>
 
@@ -113,7 +135,7 @@
   {% for module_id in empty_mod %}
     <script>
       "use strict";
-      $(".mod{{ module_id }}").on("click", function () { $(".alert").show().slideUp(2000); });
+      $(".mod{{ module_id }}").on("click", function () { $(".alert").show().slideUp(3000); });
     </script>
   {% endfor %}
 

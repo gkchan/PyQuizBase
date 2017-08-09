@@ -3,35 +3,58 @@
 {% block head %}
 
   <style>
-    .title {
+    
+    /*Testing different styles*/
 
-      color: red;
+    .titletext {
+
+      font-family: helvetica, sans-serif, impact;
     }
+   
 
     h1 {
       color: #5F98FF;
+      font-family: impact;
+    }
+
+    h2 {
+
     }
 
     p {
 
       color: #924AFF;
     }
+
+    body {
+      background-color: #acc4e1;
+      background: url(static/img/python_image.jpg) no-repeat;
+      
+
+      background-size: cover;
+    }
+
   </style>
 {% endblock %}
 
 
 {% block content %}
 
-  <div class="col-xs-offset-8" id="title">
+  <div class="container-fluid col-xs-offset-8" id="title">
 
-    <br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br>
+
+    <p id="titletext">
+    
+    <br><br>
+
+    <h2>PyQuizBase: A Python Study Tool</h2><br><br>
 
 
+    <p>Make study notes and test your knowledge.</p><br>
 
-    <h1>CODE!!</h1>
-
-    <p>Make study notes and test your knowledge.</p>
-      
+    <!-- <h1>CODE PYTHON!!</h1> -->
+   </p>
   </div>
 
 {% endblock %}
@@ -39,6 +62,6 @@
 {% block js %}
   <script>
     $("#title").hide()
-    $("#title").fadeIn(3000)
+    $("#title").fadeIn(5000)
   </script>
 {% endblock %}

@@ -1,14 +1,23 @@
 {% extends "base.html" %}
+
+{% block head %}
+  <style>
+    .textbox {
+      background: lightyellow;
+    }
+  </style>
+{% endblock %}
+
 {% block content %}
 
   <br><br><br><br>
 
-  <div class="col-xs-offset-4 col-xs-4">
+  <div id="login" class="col-xs-offset-4 col-xs-4">
     <h4>Login</h4><br>
     <form action="/login", method="POST">
-        Username: <input type="text", name="username"><br>
-        Password: <input type="password", name="password"><br><br>
-        <input type="submit", value="Login">
+        Username: <input type="text" name="username" class="textbox"><br>
+        Password: <input type="password" name="password" class="textbox"><br><br>
+        <input type="submit" value="Login" class="btn">
     </form>
   </div>
 

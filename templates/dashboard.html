@@ -1,21 +1,32 @@
 {% extends "base.html" %}
 
+{% block head %}
+  <style>
+
+    body {
+      background-color: #acc4e1;
+    }
+
+  </style>
+{% endblock %}
 {% block content %}
 
 
   
-  <div class="container-fluid col-xs-offset-2">
+  <div class="col-xs-offset-2 col-xs-8" id="dashboard">
 
 
     {% if 'current_user' in session %}
       <h3>{{ session['current_user'] }}'s Dashboard</h3>
     {% endif %}
 
-    <a href="/{{ username }}/info">User info</a><br><br>
-    <a href="/{{ username }}/studynotes">Study Notes</a><br>
-    This shows the entries in your database.<br><br>
+    <a href="/{{ username }}/info" class="btn active btn-lg">User info</a><br>
+    Shows user info<br><br>
 
-    <a href="/{{ session["current_user"] }}/quiz">Quiz</a><br>
+    <a href="/{{ username }}/studynotes" class="btn active btn-lg">Study Notes</a><br>
+    Shows the entries in your database.<br><br>
+
+    <a href="/{{ session["current_user"] }}/quiz" class="btn active btn-lg">Quiz</a><br>
 
     This quiz is randomly generated based on the entries in your database and thus can only be as accurate as the data you input.<br>
     Please check the accuracy of your entries before you add them.
@@ -26,6 +37,6 @@
 
 {% block js %}
   <script>
-  $("#dash").hide();
+    $("#dash").hide();
   </script>
 {% endblock %}
