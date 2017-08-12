@@ -1,11 +1,14 @@
 PyQuizBase: A Python Study Tool
+===============================
 
 This is a program created for coding students that allows them to store notes in a database and uses those entries in a quiz to test the students' knowledge.
 
 Tech Stack:
+-----------
 Python, Flask, Jinja, Javascript, jQuery, HTML, CSS, Bootstrap, SQL, SQLAlchemy, PostgreSQL
 
 Features
+--------
 
 Registration/Login
 
