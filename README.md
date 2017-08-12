@@ -30,7 +30,7 @@ Progress
 
 There is an entry in the database that increments as students answer questions correctly. This is used to calculate a student's level along with a percentage for a progress bar that displays how close they are to levelling up.
 
-![Homepage](/static/img/homepage.png)
-![Dashboard](/static/img/dashboard.png)
-![Study Notes Table](/static/img/study_notes_table.png)
-![Quiz](/static/img/quiz.png)
+![Homepage](/static/img/Homepage.png)
+![Dashboard](/static/img/Dashboard.png)
+![Study Notes Table](/static/img/Study_notes_table.png)
+![Quiz](/static/img/Quiz.png)
