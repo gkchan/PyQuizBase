@@ -20,7 +20,7 @@ Students can create their own personalized account and log in to the program. Th
 
 ### Dashboard
 
-The dashboard contains buttons that link to different parts of the program and can easily be returned to from other pages.
+The dashboard is organized with Bootstrap and contains buttons that link to different parts of the program and can easily be returned to from other pages.
 
 ![Dashboard](/static/img/Dashboard.png)
 
