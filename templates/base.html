@@ -10,16 +10,16 @@
     /*Testing different colors/styles*/
 
     .nav-color {
-      background-color: #acc4e1;
+    /*  background-color: #acc4e1;
       background-color: royalblue;
       background-color: darkturquoise;
-      background-color: powderblue;
+      background-color: powderblue;*/
       background-color: #a3cef1;
     }
 
     body {
 
-      background-color: #acc4e1;
+   /*   background-color: #acc4e1;
       background-color: lightskyblue;
       background-color: cornflowerblue;
       background-color: darkturquoise;
@@ -27,7 +27,7 @@
       
       background-color: lightcyan;
       background-color: paleturquoise;
-      background-color: powderblue;
+      background-color: powderblue;*/
       background-color: #a3cef1;
     }
 
@@ -37,12 +37,12 @@
 
     .btn {
     
-      background-color: #8dafd6;
+    /*  background-color: #8dafd6;
       background-color: dodgerblue;
      
       background-color: #a3cef1;
       background-color: #9395d3;
-      background-color: #56a3a6;
+      background-color: #56a3a6;*/
       background-color: #a4def9;
       background-color: lightskyblue;
 
@@ -67,10 +67,10 @@
     <div class="container-fluid">
 
       <div class="row navbar-default nav-color">
-        <div class="col-xs-4 nav-color">
+        <div class="col-xs-4 nav-color text-left">
           <a href="/" class="btn">Homepage</a>
         </div>
-        <div class="col-xs-offset-6 col-xs-2 navbar-right nav-color">
+        <div class="col-xs-offset-4 col-xs-4 nav-color text-right"><!-- navbar-right  -->
           <a href="/register" class="btn">Register</a>
           {% if "current_user" in session %}  
             <a href="/logout" class="btn">Logout</a><br>
