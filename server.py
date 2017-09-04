@@ -160,7 +160,8 @@ def show_study_notes(username):
     return render_template("study_notes.html", 
                             study_table=study_table, 
                             username=username,
-                            empty_mod=empty_mod)
+                            empty_mod=empty_mod,
+                            user=user)
 
 
 @app.route("/<username>/addmodules", methods=["GET"])

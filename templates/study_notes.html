@@ -87,14 +87,16 @@
                 </tr>
       
                 {% for func in mod.functions %}
-                  <tr class="funcinfo func{{ mod.module_id }} func">
-                    <td>{{ func.name }}</td>
-                    <td>{{ func.description }}</td>
-                    <td>{{ func.additional_info }}</td>
-                    <td>{% if func.sample_code and func.output %}
-                      {{ func.sample_code }} -> {{ func.output }}
-                      {% endif %}</td>
-                  </tr>
+                  {% if func.user_id == 1 or func.user_id == user.user_id %}
+                    <tr class="funcinfo func{{ mod.module_id }} func">
+                      <td>{{ func.name }}</td>
+                      <td>{{ func.description }}</td>
+                      <td>{{ func.additional_info }}</td>
+                      <td>{% if func.sample_code and func.output %}
+                        {{ func.sample_code }} -> {{ func.output }}
+                        {% endif %}</td>
+                    </tr>
+                  {% endif %}
                 {% endfor %}
 
               </table>
