@@ -187,11 +187,11 @@ def add_modules(username):
     samplecode = request.form.get("samplecode")
     output = request.form.get("output")
 
-    if mname == "":
-        flash("Please input a module name.")
+    # if mname == "":
+    #     flash("Please input a module name.")
     if fname == "":
         flash("Please input a function name.")
-    if mname == "" or fname == "":
+    # if mname == "" or fname == "":
         return redirect("/{}/addmodules".format(username)) 
 
     # fetch user to get user_id
@@ -199,7 +199,9 @@ def add_modules(username):
 
     existing_mod = Module.query.filter( ( Module.user_id==user.user_id) | (Module.user_id==1), Module.name==mname).first()
 
-    if existing_mod:
+    if mname == "":
+        module = Module.query.filter_by(module_id=1).first()
+    elif existing_mod:
         module = existing_mod  
     else:
         module = Module(name=mname,
