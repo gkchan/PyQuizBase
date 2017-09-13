@@ -280,6 +280,37 @@ def process_question(username):
     return render_template("answer.html", result=result, answer=session["answer"])
 
 
+@app.route("/<username>/delete", methods=["GET"])
+def show_delete_functions(username):
+    """Shows delete functions page"""
+
+    return render_template("delete.html", username=username)
+
+@app.route("/<username>/delete", methods=["POST"])
+def delete_function(username):
+    """Deletes functions"""
+
+    del_func = request.form.get("dfunc")
+    del_mod = request.form.get("dmod")
+    user = User.query.filter_by(username=username).first()
+
+    # print del_func, del_mod
+
+    module = Module.query.filter_by(name=del_mod).first()
+
+    function = Function.query.filter_by(user_id=user.user_id, name=del_func, module_id=module.module_id).first()
+
+    db.session.delete(function)
+    db.session.commit()
+    
+    # print module, function
+
+    return redirect("/{}/studynotes".format(username))
+
+
+  
+
+
 # References:
 # https://www.w3schools.com/
 # https://coolors.co/
@@ -292,7 +323,7 @@ def process_question(username):
 if __name__ == "__main__":
 
     # for debugging
-    app.debug = False
+    app.debug = True
     app.jinja_env.auto_reload = app.debug
 
     connect_to_db(app)
