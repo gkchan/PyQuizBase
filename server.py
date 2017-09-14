@@ -180,6 +180,9 @@ def show_add_modules(username):
 def add_modules(username):
     """Add function/module information"""
 
+    if not verify_user(username):
+        return redirect("/login")
+
     mname = request.form.get("mname")
     mdesc = request.form.get("mdesc")
     fname = request.form.get("fname")
@@ -252,6 +255,9 @@ def show_question(username):
 def process_question(username):
     """Processes student answer and displays results with answer."""
 
+    if not verify_user(username):
+        return redirect("/login")
+
     user_answer = request.form.get("useranswer")
 
     # print "user_answer:", user_answer
@@ -284,12 +290,18 @@ def process_question(username):
 def show_delete_functions(username):
     """Shows delete functions page"""
 
+    if not verify_user(username):
+        return redirect("/login")
+
     return render_template("delete.html", username=username)
 
 @app.route("/<username>/delete", methods=["POST"])
 def delete_function(username):
     """Deletes functions"""
 
+    if not verify_user(username):
+        return redirect("/login")    
+    
     del_func = request.form.get("dfunc")
     del_mod = request.form.get("dmod")
     user = User.query.filter_by(username=username).first()
