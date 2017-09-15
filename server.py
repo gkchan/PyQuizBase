@@ -294,8 +294,9 @@ def show_delete_functions(username):
         return redirect("/login")
 
     return render_template("delete.html", username=username)
+    
 
-@app.route("/<username>/delete", methods=["POST"])
+@app.route("/<username>/deletefunc", methods=["POST"])
 def delete_function(username):
     """Deletes functions"""
 
@@ -318,6 +319,26 @@ def delete_function(username):
     # print module, function
 
     return redirect("/{}/studynotes".format(username))
+
+
+@app.route("/<username>/deletemod", methods=["POST"])
+def delete_module(username):
+    """Delete module"""
+
+    if not verify_user(username):
+        return redirect("/login") 
+
+    dmod = request.form.get("dmod")
+
+    module = Module.query.filter_by(name=dmod).first()
+
+    if not module.functions:
+        db.session.delete(module)
+        db.session.commit()
+
+    return redirect("/{}/studynotes".format(username))
+
+
 
 
   

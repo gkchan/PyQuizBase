@@ -6,10 +6,16 @@
 
     Can only delete functions that you add<br><br>
 
-    <form action="/{{ username }}/delete" method="POST">
+    <form action="/{{ username }}/deletefunc" method="POST">
       Delete function <input type="text" name="dfunc">
       in module <input type="text" name="dmod">
       <input type="submit" value="Delete function" class="btn">
+    </form><br>
+
+    <form action="/{{ username }}/deletemod" method="POST">
+      Can only delete empty modules<br><br>
+      Delete module <input type="text" name="dmod">
+      <input type="submit" value="Delete module" class="btn">
     </form>
   </div>
 
