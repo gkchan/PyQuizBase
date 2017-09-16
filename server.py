@@ -311,10 +311,11 @@ def delete_function(username):
 
     module = Module.query.filter_by(name=del_mod).first()
 
-    function = Function.query.filter_by(user_id=user.user_id, name=del_func, module_id=module.module_id).first()
-
-    db.session.delete(function)
-    db.session.commit()
+    if module:
+        function = Function.query.filter_by(user_id=user.user_id, name=del_func, module_id=module.module_id).first()
+        if function:
+            db.session.delete(function)
+            db.session.commit()
     
     # print module, function
 
