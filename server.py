@@ -333,7 +333,7 @@ def delete_module(username):
 
     module = Module.query.filter_by(name=dmod).first()
 
-    if not module.functions:
+    if module and not module.functions:
         db.session.delete(module)
         db.session.commit()
 
