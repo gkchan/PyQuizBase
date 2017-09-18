@@ -316,6 +316,10 @@ def delete_function(username):
         if function:
             db.session.delete(function)
             db.session.commit()
+        else:
+            flash("Function can't be deleted because it doesn't exist.")
+    else:
+        flash("Module doesn't exist.")
     
     # print module, function
 
@@ -336,6 +340,8 @@ def delete_module(username):
     if module and not module.functions:
         db.session.delete(module)
         db.session.commit()
+    else:
+        flash("Module was not deleted because it doesn't exist or contains functions.")
 
     return redirect("/{}/studynotes".format(username))
 
