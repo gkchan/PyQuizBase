@@ -316,6 +316,7 @@ def delete_function(username):
         if function:
             db.session.delete(function)
             db.session.commit()
+            flash("The function {} has been deleted.".format(function.name))
         else:
             flash("Function can't be deleted because it doesn't exist.")
     else:
@@ -340,6 +341,7 @@ def delete_module(username):
     if module and not module.functions:
         db.session.delete(module)
         db.session.commit()
+        flash("The module {} has been deleted.".format(module.name))
     else:
         flash("Module was not deleted because it doesn't exist or contains functions.")
 
