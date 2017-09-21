@@ -8,9 +8,13 @@
     <form action="/{{ username }}/addmodules" method="POST">
       Module Name: <input type="text" name="mname" class="textbox"><br>
       Module Description: <textarea name="mdesc" class="form-control textbox" rows="2" style="width:90%"></textarea>
-      <br><br>
+      <br>
+      Module Additional Info: <textarea name="maddinfo" class="form-control textbox" style="width:90%"></textarea><br><br>
+      
       Function Name: <input type="text" name="fname" class="textbox"><br>
       Function Description: <textarea name="fdesc" class="form-control textbox" rows="2" style="width:90%"></textarea><br>
+
+
       Example Code:<br><br>
       Function code to run: <textarea name="samplecode" class="form-control textbox" rows="1" style="width:90%"></textarea><br>
       Function output: <textarea name="output" class="form-control textbox" rows="1" style="width:90%"></textarea><br><br>

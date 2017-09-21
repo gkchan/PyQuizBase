@@ -185,6 +185,7 @@ def add_modules(username):
 
     mname = request.form.get("mname")
     mdesc = request.form.get("mdesc")
+    maddinfo = request.form.get("maddinfo")
     fname = request.form.get("fname")
     fdesc = request.form.get("fdesc")
     samplecode = request.form.get("samplecode")
@@ -209,6 +210,7 @@ def add_modules(username):
     else:
         module = Module(name=mname,
                         description=mdesc,
+                        additional_info=maddinfo,
                         user_id=user.user_id)
 
         db.session.add(module)
