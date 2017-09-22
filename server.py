@@ -188,6 +188,7 @@ def add_modules(username):
     maddinfo = request.form.get("maddinfo")
     fname = request.form.get("fname")
     fdesc = request.form.get("fdesc")
+    faddinfo = request.form.get("faddinfo")
     samplecode = request.form.get("samplecode")
     output = request.form.get("output")
 
@@ -217,7 +218,8 @@ def add_modules(username):
         db.session.commit()        
 
     function = Function(name=fname, 
-                        description=fdesc, 
+                        description=fdesc,
+                        additional_info=faddinfo, 
                         sample_code=samplecode, 
                         output=output,
                         user_id=user.user_id,
