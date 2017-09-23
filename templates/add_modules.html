@@ -9,7 +9,10 @@
       Module Name: <input type="text" name="mname" class="textbox"><br>
       Module Description: <textarea name="mdesc" class="form-control textbox" rows="2" style="width:90%"></textarea>
       <br>
-      Module Additional Info: <textarea name="maddinfo" class="form-control textbox" style="width:90%"></textarea><br><br>
+
+      <div id="addm">Show/hide add additional module info</div>
+      <div id="maddinfo">Module Additional Info: <textarea name="maddinfo" class="form-control textbox" style="width:90%"></textarea></div>
+      <br><br>
 
       Function Name: <input type="text" name="fname" class="textbox"><br>
       Function Description: <textarea name="fdesc" class="form-control textbox" rows="2" style="width:90%"></textarea><br>
@@ -25,4 +28,11 @@
 
   </div>
 
+{% endblock %}
+
+{% block js %}
+  <script>
+    $("#maddinfo").hide();
+    $("#addm").on("click", function () { $("#maddinfo").toggle(); });
+  </script>
 {% endblock %}
