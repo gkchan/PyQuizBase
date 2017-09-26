@@ -10,7 +10,9 @@
       Module Description: <textarea name="mdesc" class="form-control textbox" rows="2" style="width:90%"></textarea>
       <br>
 
-      <div id="addm" class="btn">Show/hide add additional module info</div>
+      <div id="showmod" class="addm btn">Show add additional module info</div>
+      <div id="hidemod" class="addm btn">Hide add additional module info</div>
+
       <div id="maddinfo">Module Additional Info: <textarea name="maddinfo" class="form-control textbox" style="width:90%"></textarea></div>
       <br><br>
 
@@ -35,7 +37,9 @@
 {% block js %}
   <script>
     $("#maddinfo").hide();
-    $("#addm").on("click", function () { $("#maddinfo").toggle(); });
+    $("#hidemod").hide();
+    $(".addm").on("click", function () { $("#maddinfo").toggle();
+                                        $(".addm").toggle(); });
 
     $("#faddinfo").hide();
     $("#addf").on("click", function () { $("#faddinfo").toggle(); });
