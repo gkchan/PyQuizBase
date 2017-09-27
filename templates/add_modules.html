@@ -19,7 +19,9 @@
       Function Name: <input type="text" name="fname" class="textbox"><br>
       Function Description: <textarea name="fdesc" class="form-control textbox" rows="2" style="width:90%"></textarea><br>
 
-      <div id="addf" class="btn">Show/hide add additional function info</div>
+      <div id="showfunc" class="addf btn">Show add additional function info</div>
+      <div id="hidefunc" class="addf btn">Hide add additional function info</div>
+
       <div id="faddinfo">Function Additional Info: <textarea name="faddinfo" class="form-control textbox" style="width:90%"></textarea></div><br>
 
 
@@ -42,7 +44,9 @@
                                         $(".addm").toggle(); });
 
     $("#faddinfo").hide();
-    $("#addf").on("click", function () { $("#faddinfo").toggle(); });
+    $("#hidefunc").hide();
+    $(".addf").on("click", function () { $("#faddinfo").toggle(); 
+                                        $(".addf").toggle(); });
 
   </script>
 {% endblock %}
