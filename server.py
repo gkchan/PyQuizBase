@@ -192,11 +192,8 @@ def add_modules(username):
     samplecode = request.form.get("samplecode")
     output = request.form.get("output")
 
-    # if mname == "":
-    #     flash("Please input a module name.")
     if fname == "":
         flash("Please input a function name.")
-    # if mname == "" or fname == "":
         return redirect("/{}/addmodules".format(username)) 
 
     # fetch user to get user_id
