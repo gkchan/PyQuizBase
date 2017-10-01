@@ -10,22 +10,6 @@ from model import User, Level, Module, Function
 
 from random import randint, choice, sample, shuffle
 
-
-# May have separate or combined functions depending on what program ultimately does
-
-# def choose_random_function():
-#     "Chooses a random function entry from the database"
-
-#     function_count = Function.query.count()
-#     function_id = randint(1, function_count)
-#     function_entry = Function.query.get(function_id)
-
-#     # simple testing/debugging during development
-#     print function_count, function_id, function_entry
-
-#     return function_entry
-
-
 def ask_question():
     """Asks a question about the sample code and output"""
     
@@ -34,8 +18,7 @@ def ask_question():
     function_entry = choice(functions)
     
     # simple testing/debugging during development
-    print functions
-    print function_entry
+    print functions, function_entry
 
     sample_code_question = "What output do you get when you input the following code?"
     sample_code = function_entry.sample_code
@@ -63,3 +46,13 @@ def ask_question():
     return sample_code_question, sample_code, answer, answer_choices
 
 
+# May have separate or combined functions depending on what program ultimately does
+
+# def choose_random_function():
+#     "Chooses a random function entry from the database"
+
+#     function_count = Function.query.count()
+#     function_id = randint(1, function_count)
+#     function_entry = Function.query.get(function_id)
+
+#     return function_entry
