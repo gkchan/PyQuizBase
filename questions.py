@@ -46,13 +46,3 @@ def ask_question():
     return sample_code_question, sample_code, answer, answer_choices
 
 
-# May have separate or combined functions depending on what program ultimately does
-
-# def choose_random_function():
-#     "Chooses a random function entry from the database"
-
-#     function_count = Function.query.count()
-#     function_id = randint(1, function_count)
-#     function_entry = Function.query.get(function_id)
-
-#     return function_entry
