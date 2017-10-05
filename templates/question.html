@@ -4,11 +4,9 @@
   <style>
 
     #exit {
-      align-items: right;
-    /*  color: black;
-      background-color: powderblue;
-      background-color: royalblue;
-      background-color: lightskyblue;*/
+      /*align-items: right;*/
+      /*color: black;*/
+      /*background-color: lightskyblue;*/
     }
 
     #question {
@@ -16,11 +14,8 @@
     }
 
     .button {
-
       background-color: powderblue;
-
     }
-
 
   </style>
 {% endblock %}
@@ -32,21 +27,15 @@
   <div id="question" class="col-xs-offset-3 col-xs-6">
 
     <h1>Question:<h1>
-
     <h4>{{ question }}</h4>
-
     <h4>{{ input_code }}</h4><br>
 
     <form action="/{{ session["current_user"] }}/quiz" method="POST">
-     
       {% for i, ans in answer_choices %}
         <button type="submit" name="useranswer" value={{ i }} 
         class="btn btn-info btn-lg btn-block" style="width:100%">{{ ans }}</button><br>
       {% endfor %}<br>
-    
     </form>
-
-  
 
   </div>
 
