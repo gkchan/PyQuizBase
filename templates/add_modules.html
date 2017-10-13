@@ -7,14 +7,12 @@
 
     <form action="/{{ username }}/addmodules" method="POST">
       Module Name: <input type="text" name="mname" class="textbox"><br>
-      Module Description: <textarea name="mdesc" class="form-control textbox" rows="2" style="width:90%"></textarea>
-      <br>
+      Module Description: <textarea name="mdesc" class="form-control textbox" rows="2" style="width:90%"></textarea><br>
 
       <div id="showmod" class="active addm btn">Show add additional module info</div>
       <div id="hidemod" class="active addm btn">Hide add additional module info</div>
 
-      <div id="maddinfo">Module Additional Info: <textarea name="maddinfo" class="form-control textbox" style="width:90%"></textarea></div>
-      <br><br>
+      <div id="maddinfo">Module Additional Info: <textarea name="maddinfo" class="form-control textbox" style="width:90%"></textarea></div><br><br>
 
       Function Name: <input type="text" name="fname" class="textbox"><br>
       Function Description: <textarea name="fdesc" class="form-control textbox" rows="2" style="width:90%"></textarea><br>
@@ -24,12 +22,10 @@
 
       <div id="faddinfo">Function Additional Info: <textarea name="faddinfo" class="form-control textbox" style="width:90%"></textarea></div><br>
 
-
       Example Code:<br><br>
       Function code to run: <textarea name="samplecode" class="form-control textbox" rows="1" style="width:90%"></textarea><br>
       Function output: <textarea name="output" class="form-control textbox" rows="1" style="width:90%"></textarea><br><br>
       <input type="submit" value="Add New Function Info" class="btn active">
-
     </form>
 
   </div>
@@ -42,11 +38,9 @@
     $("#hidemod").hide();
     $(".addm").on("click", function () { $("#maddinfo").toggle();
                                         $(".addm").toggle(); });
-
     $("#faddinfo").hide();
     $("#hidefunc").hide();
     $(".addf").on("click", function () { $("#faddinfo").toggle(); 
-                                        $(".addf").toggle(); });
-
+                                       $(".addf").toggle(); });
   </script>
 {% endblock %}
