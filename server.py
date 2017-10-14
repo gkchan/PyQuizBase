@@ -23,7 +23,6 @@ app.secret_key = "code"
 app.jinja_env.undefined = StrictUndefined
 
 
-
 @app.route('/')
 def show_homepage():
     """Display homepage"""
@@ -282,8 +281,6 @@ def process_question(username):
     else:
         result = "wrong. Don't give up. Keep studying, and you'll get it right next time!"
 
-
-
     return render_template("answer.html", result=result, answer=session["answer"])
 
 
@@ -351,15 +348,10 @@ def delete_module(username):
 
 
 
-  
-
 
 # References:
 # https://www.w3schools.com/
 # https://coolors.co/
-
-
-
 
 
 
