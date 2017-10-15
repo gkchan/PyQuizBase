@@ -54,7 +54,7 @@ def register_user():
         flash("Username is already in use. Please choose a different one.")
     else:
         user = User(username=username, 
-                    password=password, 
+                    password=str(hash(password)), 
                     first_name=first_name, 
                     last_name=last_name, 
                     email=email)
@@ -84,7 +84,8 @@ def login():
     """Login"""
 
     username = request.form.get("username")
-    password = request.form.get("password")
+    password = str(hash(request.form.get("password")))
+    print password
 
     user = User.query.filter_by(username=username, password=password).first()
     if user:
