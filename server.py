@@ -22,6 +22,9 @@ app.secret_key = "code"
 # forces an error to be raised if variable is undefined in Jinja2
 app.jinja_env.undefined = StrictUndefined
 
+# Only basic security implemented, can implement a random salt for more security and hide secret codes
+salt = "es2kR4laFf9"
+
 
 @app.route('/')
 def show_homepage():
@@ -54,7 +57,7 @@ def register_user():
         flash("Username is already in use. Please choose a different one.")
     else:
         user = User(username=username, 
-                    password=str(hash(password)), 
+                    password=str(hash(salt + password)), 
                     first_name=first_name, 
                     last_name=last_name, 
                     email=email)
@@ -84,7 +87,7 @@ def login():
     """Login"""
 
     username = request.form.get("username")
-    password = str(hash(request.form.get("password")))
+    password = str(hash(salt + request.form.get("password")))
     print password
 
     user = User.query.filter_by(username=username, password=password).first()
