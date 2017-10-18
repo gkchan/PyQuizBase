@@ -12,6 +12,10 @@ class FlaskTests(TestCase):
         self.client = app.test_client()
         app.config["TESTING"] = True
 
+        with self.client as c:
+            with c.session_transaction() as sess:
+                sess['current_user'] = "user"
+
     def tearDown(self):
         """Performs this after all tests"""
 
@@ -28,6 +32,18 @@ class FlaskTests(TestCase):
 
         result = self.client.get("/register")
         self.assertIn("Register", result.data)
+
+    def test_show_login(self):
+        """Tests whether login page shows."""
+
+        result = self.client.get("/login")
+        self.assertIn("Login", result.data)
+
+    def test_show_dashboard(self):
+        """Tests whether dashboard shows."""
+
+        result = self.client.get("/user/dashboard")
+        self.assertIn("user's Dashboard", result.data)
 
 
 class DatabaseTests(TestCase):
