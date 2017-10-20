@@ -3,6 +3,14 @@ from server import app, show_homepage, show_register_form, show_study_notes
 from model import db, sample_data, connect_to_db
 
 
+def set_user_login(self):
+    """Simulates login to test page views that require a login"""
+
+    with self.client as c:
+            with c.session_transaction() as sess:
+                sess['current_user'] = "user"
+
+
 class FlaskTests(TestCase):
     """Tests the webpages"""
 
@@ -12,9 +20,7 @@ class FlaskTests(TestCase):
         self.client = app.test_client()
         app.config["TESTING"] = True
 
-        with self.client as c:
-            with c.session_transaction() as sess:
-                sess['current_user'] = "user"
+        set_user_login(self)
 
     def tearDown(self):
         """Performs this after all tests"""
@@ -56,9 +62,7 @@ class DatabaseTests(TestCase):
         app.config["TESTING"] = True
         app.config["SECRET_KEY"] = "code"
 
-        with self.client as c:
-            with c.session_transaction() as sess:
-                sess['current_user'] = "user"
+        set_user_login(self)
 
         # Connect to test database
         connect_to_db(app, "postgresql:///testdb")
