@@ -51,9 +51,16 @@ class FlaskTests(TestCase):
         result = self.client.get("/user/dashboard")
         self.assertIn("user's Dashboard", result.data)
 
+    def test_show_add_module(self):
+        """Tests whether add module page shows"""
+
+        result = self.client.get("/user/addmodules")
+        self.assertIn("Add New Function Info", result.data)
+
+
 
 class DatabaseTests(TestCase):
-    """Tests the database"""
+    """Tests the database and pages that require a database"""
 
     def setUp(self):
         """Performs this before each test."""
@@ -101,6 +108,15 @@ class DatabaseTests(TestCase):
 
         result = self.client.get("/user/studynotes")
         self.assertIn("testmod", result.data)
+
+
+    # Note: will require more sample data in test database to test quiz
+
+    # def test_show_question(self):
+    #     """Tests whether quiz question shows."""
+
+    #     result = self.client.get("/user/quiz")
+    #     self.assertIn("Question", result.data)
 
 
 
