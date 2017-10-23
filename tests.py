@@ -109,14 +109,14 @@ class DatabaseTests(TestCase):
         result = self.client.get("/user/studynotes")
         self.assertIn("testmod", result.data)
 
+    # Note: add more sample data in test database to test quiz
 
-    # Note: will require more sample data in test database to test quiz
+    def test_show_question(self):
+        """Tests whether quiz question shows."""
 
-    # def test_show_question(self):
-    #     """Tests whether quiz question shows."""
+        result = self.client.get("/user/quiz")
+        self.assertIn("Question", result.data)
 
-    #     result = self.client.get("/user/quiz")
-    #     self.assertIn("Question", result.data)
 
 
 
