@@ -57,6 +57,12 @@ class FlaskTests(TestCase):
         result = self.client.get("/user/addmodules")
         self.assertIn("Add New Function Info", result.data)
 
+    def test_show_delete_functions(self):
+        """Tests whether delete functions page shows"""
+
+        result = self.client.get("/user/delete")
+        self.assertIn("Delete functions", result.data)
+
 
 
 class DatabaseTests(TestCase):
