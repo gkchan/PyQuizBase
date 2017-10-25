@@ -233,61 +233,6 @@ def add_modules(username):
     return redirect("/{}/studynotes".format(username))
 
 
-@app.route("/<username>/quiz", methods=["GET"])
-def show_question(username):
-    """Displays question to answer"""
-
-    if not verify_user(username):
-        return redirect("/login")
-
-    # chooses a function entry and asks a question
-    question, input_code, answer, answer_choices = ask_question()
-    session["answer"] = answer
-    session["answer_choices"] = answer_choices
-    # session["function name"] = func_name
-
-    # print "session answer:", session["answer"]
-    # print answer_choices
-
-    return render_template("question.html", 
-                            question=question, 
-                            input_code=input_code, 
-                            answer_choices=enumerate(answer_choices))
-
-
-@app.route("/<username>/quiz", methods=["POST"])
-def process_question(username):
-    """Processes student answer and displays results with answer."""
-
-    if not verify_user(username):
-        return redirect("/login")
-
-    user_answer = request.form.get("useranswer")
-
-    # print "user_answer:", user_answer
-    
-    # User answer is passed back from the form as a number corresponding 
-    # to the index of the list of answers.
-    if session["answer_choices"][int(user_answer)] == session["answer"]:
-        result = "correct!"
-        user = User.query.filter_by(username=session["current_user"]).first()
-        user.levels.points += 1
-        if user.levels.points % 5 == 0:
-            user.levels.level = user.levels.points/5
-            flash("CONGRATULATIONS!!! You've reached level {}".format(user.levels.level))
-        db.session.commit()
-        # print user.levels.points 
-
-        remainder = user.levels.points % 5 
-        progress = remainder * 100 / 5
-        session["progress"] = progress
-
-    else:
-        result = "wrong. Don't give up. Keep studying, and you'll get it right next time!"
-
-    return render_template("answer.html", result=result, answer=session["answer"])
-
-
 @app.route("/<username>/delete", methods=["GET"])
 def show_delete_functions(username):
     """Shows delete functions page"""
@@ -349,6 +294,60 @@ def delete_module(username):
 
     return redirect("/{}/studynotes".format(username))
 
+
+@app.route("/<username>/quiz", methods=["GET"])
+def show_question(username):
+    """Displays question to answer"""
+
+    if not verify_user(username):
+        return redirect("/login")
+
+    # chooses a function entry and asks a question
+    question, input_code, answer, answer_choices = ask_question()
+    session["answer"] = answer
+    session["answer_choices"] = answer_choices
+    # session["function name"] = func_name
+
+    # print "session answer:", session["answer"]
+    # print answer_choices
+
+    return render_template("question.html", 
+                            question=question, 
+                            input_code=input_code, 
+                            answer_choices=enumerate(answer_choices))
+
+
+@app.route("/<username>/quiz", methods=["POST"])
+def process_question(username):
+    """Processes student answer and displays results with answer."""
+
+    if not verify_user(username):
+        return redirect("/login")
+
+    user_answer = request.form.get("useranswer")
+
+    # print "user_answer:", user_answer
+    
+    # User answer is passed back from the form as a number corresponding 
+    # to the index of the list of answers.
+    if session["answer_choices"][int(user_answer)] == session["answer"]:
+        result = "correct!"
+        user = User.query.filter_by(username=session["current_user"]).first()
+        user.levels.points += 1
+        if user.levels.points % 5 == 0:
+            user.levels.level = user.levels.points/5
+            flash("CONGRATULATIONS!!! You've reached level {}".format(user.levels.level))
+        db.session.commit()
+        # print user.levels.points 
+
+        remainder = user.levels.points % 5 
+        progress = remainder * 100 / 5
+        session["progress"] = progress
+
+    else:
+        result = "wrong. Don't give up. Keep studying, and you'll get it right next time!"
+
+    return render_template("answer.html", result=result, answer=session["answer"])
 
 
 
