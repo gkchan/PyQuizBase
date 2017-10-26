@@ -30,9 +30,6 @@ salt = "es2kR4laFf9"
 def show_homepage():
     """Display homepage"""
 
-    # for developing/testing purposes:
-    print session
-
     return render_template("homepage.html")
 
 
