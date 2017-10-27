@@ -13,7 +13,7 @@ from random import randint, choice, sample, shuffle
 def ask_question():
     """Asks a question about the sample code and output"""
     
-     # gets all functions with sample code and output, may need to be adapted if database ever becomes too big
+    # gets all functions with sample code and output, may need to be adapted if database ever becomes too big
     functions = Function.query.filter(Function.sample_code != "", Function.output != "").all()
     function_entry = choice(functions)
     
