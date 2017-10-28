@@ -251,8 +251,6 @@ def delete_function(username):
     del_mod = request.form.get("dmod")
     user = User.query.filter_by(username=username).first()
 
-    # print del_func, del_mod
-
     module = Module.query.filter_by(name=del_mod).first()
 
     if module:
