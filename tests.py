@@ -91,14 +91,14 @@ class DatabaseTests(TestCase):
         db.session.close()
         db.drop_all()
     
-    def test_user_info(self):
+    def test_user_info_page(self):
         """Tests whether user info page shows."""
 
         result = self.client.get("/user/info")
         self.assertIn("user's Information", result.data)
 
-    def test_add_username(self):
-        """Tests add user"""
+    def test_show_user_info(self):
+        """Tests whether user info shows."""
 
         result = self.client.get("/user/info")
         self.assertIn("testf testl", result.data)
@@ -109,8 +109,8 @@ class DatabaseTests(TestCase):
         result = self.client.get("/user/studynotes")
         self.assertIn("Modules/Functions Info", result.data)
 
-    def test_add_module(self):
-        """Tests add module"""
+    def test_show_module(self):
+        """Tests whether module info shows."""
 
         result = self.client.get("/user/studynotes")
         self.assertIn("testmod", result.data)
