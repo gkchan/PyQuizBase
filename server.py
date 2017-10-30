@@ -264,8 +264,6 @@ def delete_function(username):
     else:
         flash("Module doesn't exist.")
     
-    # print module, function
-
     return redirect("/{}/studynotes".format(username))
 
 
