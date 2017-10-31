@@ -90,6 +90,12 @@ class DatabaseTests(TestCase):
 
         db.session.close()
         db.drop_all()
+
+    def test_registration(self):
+        """Tests registration form function"""
+
+        result = self.client.post("/register", data={"username":"u", "password":"pw", "firstname":"first", "lastname":"la", "email":"e"})
+        self.assertIn("You have registered", result.data)
     
     def test_user_info_page(self):
         """Tests whether user info page shows."""
