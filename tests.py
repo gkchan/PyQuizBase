@@ -121,6 +121,15 @@ class DatabaseTests(TestCase):
         result = self.client.get("/user/studynotes")
         self.assertIn("testmod", result.data)
 
+    # Note: Goes to a redirect, not actual page
+    
+    def test_add_module_function(self):
+        """Tests whether adding a function loads redirect"""
+
+        result = self.client.post("/user/addmodules", data={"mname":"mod", "mdesc":"desc", "fname":"func", "fdesc":"desc"})
+        self.assertIn("Redirect", result.data)
+        self.assertEqual(result.status_code, 302)
+
     # Note: add more sample data in test database to test quiz
 
     def test_show_question(self):
