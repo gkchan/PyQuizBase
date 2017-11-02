@@ -16,10 +16,7 @@ def ask_question():
     # gets all functions with sample code and output, may need to be adapted if database ever becomes too big
     functions = Function.query.filter(Function.sample_code != "", Function.output != "").all()
     function_entry = choice(functions)
-    
-    # simple testing/debugging during development
-    print functions, function_entry
-
+ 
     sample_code_question = "What output do you get when you input the following code?"
     sample_code = function_entry.sample_code
 
@@ -31,15 +28,15 @@ def ask_question():
         function = choice(functions)
         output = function.output
         if output and output not in answer_choices:
-            print output
+            # print output
             answer_choices.append(output)
 
-    print answer_choices
+    # print answer_choices
 
     shuffle(answer_choices)
 
     # simple testing/debugging during development
-    print sample_code_question, answer
+    # print sample_code_question, answer
 
     # session["function_name"] = function_entry.name
 
