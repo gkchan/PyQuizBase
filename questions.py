@@ -28,7 +28,6 @@ def ask_question():
         function = choice(functions)
         output = function.output
         if output and output not in answer_choices:
-            # print output
             answer_choices.append(output)
 
     # print answer_choices
