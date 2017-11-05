@@ -30,8 +30,6 @@ def ask_question():
         if output and output not in answer_choices:
             answer_choices.append(output)
 
-    # print answer_choices
-
     shuffle(answer_choices)
 
     # simple testing/debugging during development
