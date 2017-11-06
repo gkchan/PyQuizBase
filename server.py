@@ -301,9 +301,6 @@ def show_question(username):
     session["answer_choices"] = answer_choices
     # session["function name"] = func_name
 
-    # print "session answer:", session["answer"]
-    # print answer_choices
-
     return render_template("question.html", 
                             question=question, 
                             input_code=input_code, 
