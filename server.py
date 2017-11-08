@@ -316,8 +316,6 @@ def process_question(username):
 
     user_answer = request.form.get("useranswer")
 
-    # print "user_answer:", user_answer
-    
     # User answer is passed back from the form as a number corresponding 
     # to the index of the list of answers.
     if session["answer_choices"][int(user_answer)] == session["answer"]:
