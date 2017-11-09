@@ -326,7 +326,6 @@ def process_question(username):
             user.levels.level = user.levels.points/5
             flash("CONGRATULATIONS!!! You've reached level {}".format(user.levels.level))
         db.session.commit()
-        # print user.levels.points 
 
         remainder = user.levels.points % 5 
         progress = remainder * 100 / 5
