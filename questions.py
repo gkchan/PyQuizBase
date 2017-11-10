@@ -32,9 +32,6 @@ def ask_question():
 
     shuffle(answer_choices)
 
-    # simple testing/debugging during development
-    # print sample_code_question, answer
-
     # session["function_name"] = function_entry.name
 
     return sample_code_question, sample_code, answer, answer_choices
