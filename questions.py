@@ -32,8 +32,6 @@ def ask_question():
 
     shuffle(answer_choices)
 
-    # session["function_name"] = function_entry.name
-
     return sample_code_question, sample_code, answer, answer_choices
 
 
