@@ -299,7 +299,6 @@ def show_question(username):
     question, input_code, answer, answer_choices = ask_question()
     session["answer"] = answer
     session["answer_choices"] = answer_choices
-    # session["function name"] = func_name
 
     return render_template("question.html", 
                             question=question, 
