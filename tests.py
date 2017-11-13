@@ -109,6 +109,12 @@ class DatabaseTests(TestCase):
         result = self.client.get("/user/info")
         self.assertIn("testf testl", result.data)
 
+    def test_show_user_info_email(self):
+        """Test whether e-mail shows on user info page"""
+
+        result = self.client.get("/user/info")
+        self.assertIn("test@gmail.com", result.data)
+
     def test_study_notes(self):
         """Test whether study table page shows."""
 
