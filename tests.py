@@ -64,7 +64,6 @@ class FlaskTests(TestCase):
         self.assertIn("Delete functions", result.data)
 
 
-
 class DatabaseTests(TestCase):
     """Tests the database and pages that require a database"""
 
@@ -114,6 +113,12 @@ class DatabaseTests(TestCase):
 
         result = self.client.get("/user/info")
         self.assertIn("test@gmail.com", result.data)
+
+    def test_show_user_info_level(self):
+        """Test whether level shows on user info page"""
+
+        result = self.client.get("/user/info")
+        self.assertIn("5", result.data)
 
     def test_study_notes(self):
         """Test whether study table page shows."""
