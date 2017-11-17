@@ -63,6 +63,12 @@ class FlaskTests(TestCase):
         result = self.client.get("/user/delete")
         self.assertIn("Delete functions", result.data)
 
+    def test_show_delete_modules(self):
+        """Tests whether delete modules shows"""
+
+        result = self.client.get("/user/delete")
+        self.assertIn("Delete modules", result.data)
+
 
 class DatabaseTests(TestCase):
     """Tests the database and pages that require a database"""
