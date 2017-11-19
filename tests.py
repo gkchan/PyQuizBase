@@ -138,6 +138,12 @@ class DatabaseTests(TestCase):
         result = self.client.get("/user/studynotes")
         self.assertIn("testmod", result.data)
 
+    def test_show_function(self):
+        """Tests whether function shows"""
+
+        result = self.client.get("/user/studynotes")
+        self.assertIn("func", result.data)
+
     # Note: Goes to a redirect, not actual page
     
     def test_add_module_function(self):
