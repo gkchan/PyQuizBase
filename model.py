@@ -105,9 +105,9 @@ def sample_data():
     testlevel = Level(user_id=1, level=5, points=25)
     module1 = Module(name="testmod", description="moddesc", user_id=1)
     func1 = Function(name="func", description="funcdesc", user_id=1, sample_code="code1", output="output1")
-    func2 = Function(name="func", description="funcdesc", user_id=1, sample_code="code2", output="output2")
-    func3 = Function(name="func", description="funcdesc", user_id=1, sample_code="code3", output="output3")
-    func4 = Function(name="func", description="funcdesc", user_id=1, sample_code="code4", output="output4")
+    func2 = Function(name="func2", description="funcdesc", user_id=1, sample_code="code2", output="output2")
+    func3 = Function(name="func3", description="funcdesc", user_id=1, sample_code="code3", output="output3")
+    func4 = Function(name="func4", description="funcdesc", user_id=1, sample_code="code4", output="output4")
 
     db.session.add_all([testuser, testlevel, module1, func1, func2, func3, func4])
  
