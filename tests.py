@@ -144,6 +144,12 @@ class DatabaseTests(TestCase):
         result = self.client.get("/user/studynotes")
         self.assertIn("func", result.data)
 
+    def test_show_description(self):
+        """Tests whether module description shows"""
+
+        result = self.client.get("/user/studynotes")
+        self.assertIn("moddesc", result.data)
+
     # Note: Goes to a redirect, not actual page
     
     def test_add_module_function(self):
